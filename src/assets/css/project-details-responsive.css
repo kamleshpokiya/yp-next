@@ -1,0 +1,184 @@
+@media(max-width: 1655px) {
+    #projectDetailsPage .task-box {
+        min-width: 350px;
+    }
+}
+
+@media(max-width:1365px) {}
+
+@media(max-width:1199px) {
+    #projectDetailsPage .col-lg-2 {
+        max-width: 17.666667% !important;
+    }
+
+    #projectDetailsPage .pdlb {
+        padding-left: 18.666667%;
+    }
+
+    #projectDetailsPage .pdrb {
+        padding-right: 33%;
+    }
+}
+
+@media(max-width:991px) {
+    #projectDetailsPage a#v-pills-profile-tab {
+        margin-bottom: 41px;
+        margin-top: 29px;
+        margin-left: 20px;
+    }
+
+    #projectDetailsPage div#first .project-des-main-box {
+        height: 100vh !important;
+    }
+
+    #projectDetailsPage .links {
+        width: unset;
+        padding: 0;
+    }
+
+
+    #projectDetailsPage .project-btn-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+    }
+
+    #projectDetailsPage .links li:first-child {
+        border-top: 0;
+
+    }
+
+    #projectDetailsPage .tasks-title h3 {
+        background: #f6f7f9;
+        padding: 16px;
+    }
+
+    #projectDetailsPage .col-md-4.task-box {
+        border: 0;
+        background: #f6f7f9;
+    }
+
+    #projectDetailsPage .task-contain:last-child {
+        margin-bottom: 80px;
+    }
+
+    #projectDetailsPage .rightSide {
+        max-width: 100% !important;
+        flex-grow: 1 !important;
+    }
+
+    #projectDetailsPage .col-lg-2 {
+        max-width: 100% !important;
+    }
+
+    #projectDetailsPage .open-listing-btn a {
+        top: 60px;
+        right: 50px;
+        left: unset;
+    }
+
+    #projectDetailsPage .horizonta-scroll-bar-wrap .main-search-box {
+        width: 40%;
+    }
+
+    #projectDetailsPage .horizonta-scroll-bar-wrap .main-search-box button {
+        top: 21px;
+        right: 1px;
+        left: unset;
+    }
+
+
+    #projectDetailsPage .main-search-box .task-main-box {
+        height: 74vh;
+    }
+
+    #projectDetailsPage .tasks.scroll-bar-wrap .scroll-box {
+        width: 100%;
+        height: 64vh;
+    }
+
+    #projectDetailsPage .task-main-box {
+        height: 74vh;
+    }
+
+    #projectDetailsPage .height {
+        height: 58vh !important;
+    }
+
+
+    #projectDetailsPage .todo-height {
+        height: 48vh !important;
+    }
+
+    #projectDetailsPage .pdlb {
+        padding-left: 0px;
+    }
+
+    #projectDetailsPage .pdrb {
+        padding-right: 0;
+    }
+
+    #projectDetailsPage .col-lg-2.toggle {
+        position: unset;
+        z-index: 9999;
+    }
+
+}
+
+@media(max-width:768px) {
+    #projectDetailsPage .task-box {
+        min-width: 60%;
+    }
+
+    #projectDetailsPage .horizonta-scroll-bar-wrap .main-search-box input.search {
+        padding: 7px;
+        margin: 10px 0;
+    }
+
+    #projectDetailsPage .tasks-title h3 {
+        padding: 10px;
+    }
+
+    #projectDetailsPage .tasks-title h3 {
+        margin-bottom: 10px;
+    }
+
+    #projectDetailsPage button svg {
+        width: 16px;
+    }
+
+    #projectDetailsPage .horizonta-scroll-bar-wrap .main-search-box button {
+        top: 12px;
+        right: 1px;
+        width: 30px;
+        height: 36px;
+    }
+
+    #projectDetailsPage .task-contain>span {
+        font-size: 11px;
+    }
+}
+
+@media(max-width:584px) {
+    #projectDetailsPage .task-box {
+        min-width: 100%;
+    }
+
+    #projectDetailsPage .list-hidden {
+        display: block;
+    }
+
+    #projectDetailsPage .listing-box {
+        display: none !important;
+        text-align: center;
+    }
+
+    #projectDetailsPage .list-show {
+        display: block !important;
+    }
+
+    #projectDetailsPage .horizonta-scroll-bar-wrap .main-search-box {
+        width: 100%;
+    }
+}

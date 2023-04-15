@@ -1,0 +1,474 @@
+#teamsPage .col-md-4.left {
+    padding: 0;
+    padding-right: 15px;
+}
+
+#teamsPage .team-logo {
+    width: 100%;
+    height: 120px;
+}
+
+#teamsPage .col-md-4.left.team-logo img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+}
+
+#teamsPage .input-box label {
+    display: block !important;
+}
+
+#teamsPage .input {
+    margin-bottom: 20px;
+}
+
+
+/* #teamsPage .account-box label {
+    display: flex !important;
+    margin-bottom: 0;
+    font-size: 15px;
+    font-family: 'Gilroy-Sami-bold';
+} */
+
+#teamsPage #name,
+input.search,
+#number {
+    border-radius: 8px;
+    border-style: none;
+    padding: 10px 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    font-family: 'Gilroy-regular';
+    font-size: 16px;
+}
+
+#teamsPage .msg-section {
+    top: 0px !important;
+    right: -40px;
+}
+
+#teamsPage .input .main-search-box input.search {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+#teamsPage .secend-box button {
+    /* border: 0;
+    position: absolute;
+    color: #ddd;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    top: 30px;
+    left: unset;
+    right: 1px; */
+    border: none;
+    background-color: transparent;
+}
+
+#teamsPage .scroll-bar-wrap {
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+}
+
+#teamsPage .main-checkbox {
+    height: 247px !important;
+    overflow: auto;
+    padding: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#teamsPage .scroll-box {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+#teamsPage .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f6f7f9;
+    margin-bottom: 10px;
+}
+
+#teamsPage .checkbox input[type=checkbox] {
+    position: relative;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+    outline: 0;
+    padding: 0 !important;
+    vertical-align: text-top;
+    height: 20px;
+    width: 20px;
+    -webkit-appearance: none;
+    opacity: .5;
+}
+
+#teamsPage .yk-main-box.scroll-box label.team-checkbox {
+    border: 1px solid #ddd;
+    WIDTH: 100%;
+    border-radius: 8px;
+    padding-left: 5px;
+    display: flex !important;
+}
+
+#teamsPage .main-checkbox.scroll-box label.team-checkbox {
+    border: 1px solid #ddd;
+    WIDTH: 100%;
+    border-radius: 8px;
+    padding-left: 5px;
+    display: flex !important;
+}
+
+
+
+#teamsPage label.team-checkbox img {
+    height: 60px;
+    width: 60px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 4px;
+}
+
+#teamsPage label.team-checkbox span.team-mem {
+    font-family: 'Gilroy-Sami-bold';
+    font-size: 14px;
+    display: block;
+    padding: 10px;
+}
+
+#teamsPage label.team-checkbox span.team-dis {
+    display: block;
+    margin-top: 9px;
+    color: #ff8d4f;
+    font-size: 12px;
+}
+
+#teamsPage label {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-family: 'Gilroy-Sami-bold';
+}
+
+#teamsPage .secend-box {
+    position: relative;
+}
+
+.secend-your-teams-box,
+#teamsPage .first-team-form-box {
+    border-right: 1px dashed #ddd;
+    margin: 60px 0;
+    padding-left: 30px;
+}
+
+#teamsPage .secend-your-teams-box {
+    border-right: 0;
+
+}
+
+#teamsPage .login-title-box h3 {
+    font-style: normal;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 30px;
+}
+
+#teamsPage .checkbox input[type=checkbox]:checked {
+    background-color: #ff8d4f;
+    opacity: 1;
+    border: 1px solid #ff8d4f;
+}
+
+#teamsPage .checkbox input[type=checkbox]:before {
+    content: '';
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    margin: -1px -1px 0 -1px;
+    transform: rotate(45deg) translate(-50%, -50%);
+    z-index: 2;
+}
+
+#teamsPage button.star-btn.next_button:hover {
+    background: #fff;
+    color: #ff8d4f;
+    border: 1PX solid #ff8d4f;
+}
+
+#teamsPage button.star-btn.next_button {
+    background: #ff8d4f;
+    color: #fff;
+    BORDER: 1PX SOLID #ff8d4f;
+    box-shadow: 2px 4px 12px rgb(39 105 104 / 20%);
+    font-size: 14PX;
+    transition: all 0.5s;
+}
+
+#teamsPage .star-btn {
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+#teamsPage .buttons {
+    float: right;
+    padding: 40px 15px;
+}
+
+#teamsPage .yk-main-box.scroll-box {
+    height: 410px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 0px;
+}
+
+#teamsPage .yk-main-box label.team-checkbox {
+    display: flex !important;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* .kfgfdsg */
+#teamsPage * {
+    box-sizing: border-box;
+}
+
+
+
+#teamsPage .file-input {
+    width: 100%;
+    position: relative;
+    border-radius: 3px;
+}
+
+#teamsPage .file-input>[type='file'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
+#teamsPage .file-input.-chosen>.label {
+    opacity: 1;
+}
+
+#teamsPage div#first {
+    position: absolute;
+    right: 20px;
+    top: 45px;
+    padding: 0px 45px;
+}
+
+#teamsPage .scroll-bar-wrap {
+    width: 100%;
+    position: relative;
+}
+
+#teamsPage div#first .project-des-main-box {
+    background: #fff;
+    height: 95vh !important;
+    padding: 20px;
+    overflow: auto;
+    box-shadow: -10px 0 5px -5px #ddd;
+    border-top: 1px solid #ddd;
+}
+
+#teamsPage a.close-project-desc {
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 50%;
+    bottom: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    position: absolute;
+    left: 25px;
+    rotate: 180deg;
+}
+
+#teamsPage .col-md-4 .team-logo img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    opacity: 1;
+}
+
+#teamsPage .des-boxs h4 {
+    font-size: 17px;
+    font-family: 'Gilroy-Sami-bold';
+}
+
+#teamsPage .des-boxs>p {
+    font-size: 14px;
+    padding: 5PX 10px 0;
+    color: #4D4D4E;
+}
+
+#teamsPage .col-lg-8.right {
+    margin-top: 30px;
+}
+
+#teamsPage div#Title {
+    margin-bottom: 15px;
+}
+
+#teamsPage .project-des-box .left .team-logo {
+    width: 150px;
+    height: 120px;
+    margin-right: 20px;
+    margin-bottom: 35px;
+}
+
+#teamsPage .project-des-box {
+    display: flex;
+    align-items: center;
+}
+
+#teamsPage .project-des-main-box .scroll-bar-wrap .yk-main-box.scroll-box {
+    height: 250px !important;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+
+
+#teamsPage .add-btn {
+    position: absolute;
+    right: 30px;
+    top: 52px;
+    display: none;
+}
+
+#teamsPage .file-input img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    opacity: 1;
+}
+
+#teamsPage .res-x-btn button {
+    background: #ddd;
+    width: 35px;
+    height: 35px;
+    border: 0;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 700;
+    color: #000;
+}
+
+#teamsPage .res-x-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: none;
+}
+
+#teamsPage label.team-checkbox .right {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    WIDTH: 100%;
+    border-radius: 8px;
+    padding-left: 5px;
+}
+
+#teamsPage label.team-checkbox .left button {
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: 0;
+}
+
+#teamsPage label.team-checkbox .left button img {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 2px 2px 2px 2px;
+    filter: opacity(0.5);
+    transition: all 0.5s;
+
+}
+
+#teamsPage label.team-checkbox .left button img:hover {
+    filter: none;
+    background: #ddd;
+}
+
+#teamsPage label.team-checkbox.cencle-member {
+    border: 0 !important;
+    gap: 10px;
+}
+
+
+/* Custom CSS */
+
+#teamsPage .team-avatar-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    border: 0.3px solid #00000017;
+    background: #F6F7F9;
+    border-radius: 4px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+#teamsPage .your-teams .team-checkbox {
+    cursor: pointer;
+}
+
+#teamsPage .scroll-bar-wrap .with-removable-button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#teamsPage .actions-icons-wrapper {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+#teamsPage .actions-icon {
+    padding: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#teamsPage .actions-icon:hover {
+    filter: none;
+    background: #DDD;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+
+#teamsPage .actions-icon:hover svg {
+    color: black;
+}

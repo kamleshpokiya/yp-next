@@ -1,0 +1,391 @@
+#employeesPage input.search {
+    width: 390px;
+    padding: 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: system-ui;
+    font-size: 16px;
+    margin: 10px 0;
+    position: relative;
+}
+
+
+#employeesPage .main-search-box button {
+    /* border: 0;
+    position: absolute;
+    left: 346px;
+    top: 12px;
+    color: #ddd;
+    background: #fff;
+    width: 40px;
+    height: 41px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    border: none;
+    background: transparent;
+}
+
+#employeesPage .main-search-box {
+    position: relative;
+    margin: 10px 0;
+}
+
+#employeesPage .table-striped tbody tr:nth-of-type(odd) {
+    background: #fff;
+}
+
+#employeesPage .table-striped tbody tr:nth-of-type(even) {
+    background: #dddddd2e;
+}
+
+#employeesPage th {
+    background: #dddddd2e;
+
+}
+
+#employeesPage tbody tr td .profile-img,
+#employeesPage .table-avatar-image {
+    width: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#employeesPage .actives {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#employeesPage .delet img {
+    width: 33px !important;
+}
+
+.delet img,
+#employeesPage .edit img {
+    width: 30px;
+    filter: opacity(0.5);
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+
+#employeesPage .delet img:hover {
+    filter: none;
+    background: #DDD;
+}
+
+#employeesPage .edit img:hover {
+    filter: none;
+    background: #DDD;
+}
+
+/* pagrnation */
+
+#employeesPage .pagination {
+    display: inline-block;
+}
+
+#employeesPage .pagination a {
+    text-decoration: none;
+    color: #000;
+    float: left;
+    padding: 8px 16px;
+}
+
+#employeesPage .pagination1 a.active {
+    background-color: #ff8d4f;
+    color: #FFF;
+}
+
+#employeesPage .pagination1 a:hover:not(.active) {
+    background-color: #DDD;
+}
+
+#employeesPage .pagination2 a.active {
+    background-color: #4CAF50;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+#employeesPage .pagination2 a:hover:not(.active) {
+    background-color: #DDD;
+    border-radius: 5px;
+}
+
+#employeesPage .pagination3 a {
+    transition: background-color 0.3s;
+}
+
+#employeesPage .pagination4 a:not(.active) {
+    border: 1px solid #DDD;
+}
+
+#employeesPage .pagination4 a.active {
+    border: 1px solid #4CAF50;
+}
+
+#employeesPage .pagination5 a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#employeesPage .pagination5 a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+#employeesPage .center {
+    text-align: center;
+}
+
+#employeesPage ul.breadcrumb {
+    list-style-type: none;
+    background-color: #EEE;
+    padding: 8px 16px;
+}
+
+#employeesPage ul.breadcrumb li {
+    display: inline-block;
+}
+
+#employeesPage ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: #000;
+    content: "/\00A0";
+}
+
+#employeesPage ul.breadcrumb li a {
+    color: green;
+}
+
+#employeesPage .pagination {
+    display: inline-block;
+    float: right;
+}
+
+/* #employeesPage .pdlb {
+    padding-left: 12.666667%;
+} */
+
+/* #employeesPage .col-lg-2.toggle {
+    position: absolute;
+    z-index: 9999;
+} */
+
+#employeesPage .table td,
+.table th {
+    vertical-align: baseline !important;
+    width: 0;
+}
+
+#employeesPage .edit,
+.delet {
+    cursor: pointer;
+}
+
+#employeesPage .data-table-main-box {
+    padding: 30px 50px;
+    padding-right: 350px;
+}
+
+#employeesPage .login-title-box h1 {
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#employeesPage .card {
+    background-color: unset;
+    margin: auto;
+    border: unset;
+}
+
+#employeesPage .card.col-lg-6 {
+    padding: 0 30px;
+}
+
+#employeesPage #name,
+#email,
+#role {
+    border-radius: 8px;
+    border-style: none;
+    padding: 10px 10px;
+    width: 50%;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    font-family: 'Gilroy-regular';
+    font-size: 16px;
+}
+
+#employeesPage button.star-btn.next_button {
+    background: #ff8d4f;
+    color: #fff;
+    BORDER: 1PX SOLID #ff8d4f;
+    box-shadow: 2px 4px 12px rgb(39 105 104 / 20%);
+    font-size: 14PX;
+    transition: all 0.5s;
+    float: right;
+    margin-top: 50px;
+}
+
+#employeesPage .account-box label {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-family: 'Gilroy-Sami-bold';
+}
+
+#employeesPage .input-box label {
+    display: block !important;
+}
+
+#employeesPage .input {
+    margin-bottom: 20px;
+}
+
+#employeesPage .star-btn {
+    padding: 10px 55px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+}
+
+#employeesPage .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#employeesPage select.form-select {
+    border-radius: 8px;
+    border-style: none;
+    padding: 10px 10px;
+    width: 50%;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    font-family: 'Gilroy-regular';
+    font-size: 16px;
+    font-weight: 600;
+    color: red;
+}
+
+#employeesPage .select.form-select option.color {
+    color: black;
+}
+
+#employeesPage .profile-ditels {
+    position: absolute;
+    top: 30px;
+    right: 100px;
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s;
+}
+
+#employeesPage .profile-ditels ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#employeesPage .profile-ditels::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    margin-top: -10px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+    rotate: 180deg;
+}
+
+#employeesPage .hex {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    width: 55px;
+    height: 52px;
+    /* width * 0.866 */
+    background: #ddd;
+    box-sizing: border-box;
+    -webkit-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+    -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+}
+
+#employeesPage .hex-background {
+    position: absolute;
+    /*color of the main-background*/
+    top: 2px;
+    /* equal to border thickness */
+    left: 2px;
+    /* equal to border thickness */
+    width: 51px;
+    /* container height - (border thickness * 2) */
+    height: 48px;
+    ;
+    /* container height - (border thickness * 2) */
+    -webkit-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+    -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+}
+
+#employeesPage .hex img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+    -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+}
+
+#employeesPage .msg-listing ul li.profile:first-child {
+    background: none;
+    padding: 0;
+}
+
+#employeesPage .profile-ditels.droupdown-main-box.opened {
+    visibility: visible !important;
+    opacity: 1 !important;
+    top: 25px;
+}
+
+#employeesPage .profile-ditels.droupdown-main-box ul {
+    width: max-content;
+}
+
+#employeesPage .profile-ditels.droupdown-main-box ul li:last-child {
+    border-bottom: 0;
+}
+
+#employeesPage .droupdown-main-box ul li a {
+    font-size: 15px;
+    color: #212529;
+}
+
+
+
+/* Custom CSS */
+#employeesPage .actions-icons-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+#employeesPage .actions-icon {
+    padding: 5px;
+}
+
+#employeesPage .actions-icon:hover {
+    filter: none;
+    background: #DDD;
+    border-radius: 4px;
+    transition: all 0.5s;
+}
+
+#employeesPage .rdt_TableBody .rdt_TableRow:nth-of-type(even) {
+    background-color: #F2F2F4;
+}

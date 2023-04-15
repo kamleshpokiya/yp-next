@@ -1,0 +1,131 @@
+@media(max-width: 1655px) {
+    #employeesPage .data-table-main-box {
+        padding: 30px 30px;
+        padding-right: 300px;
+    }
+}
+
+@media(max-width:1365px) {
+    #employeesPage .data-table-main-box {
+        padding: 30px 30px;
+        padding-right: 200px;
+    }
+}
+
+
+@media(max-width:1199px) {
+    #employeesPage .pdlb {
+        padding-left: 16.666667%;
+    }
+
+    #employeesPage .data-table-main-box {
+        padding: 30px 30px;
+        padding-right: 30px;
+    }
+
+    #employeesPage #name,
+    #email,
+    #role {
+        width: 60%;
+    }
+}
+
+@media(max-width:991px) {
+    #employeesPage .pdlb {
+        padding-left: 0;
+    }
+
+    #employeesPage .col-lg-11 {
+        max-width: 96%;
+        padding-left: 30px !important;
+        padding-right: 0 !important;
+        height: 100vh;
+    }
+
+    #employeesPage .card.col-lg-6 {
+        padding: 0 15px;
+    }
+
+    #employeesPage .col-lg-2.toggle {
+        position: unset;
+        z-index: 9999;
+    }
+
+    #employeesPage .data-table-main-box {
+        padding: 0;
+    }
+
+
+
+    #employeesPage .login-title-box h1 {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #employeesPage button.star-btn.next_button {
+        width: unset;
+    }
+
+    #employeesPage .table td,
+    .table th {
+        padding: 10px;
+    }
+
+    #employeesPage .delet img,
+    .edit img {
+        width: 26px;
+    }
+
+    #employeesPage .delet img {
+        width: 29px !important;
+    }
+}
+
+@media(max-width:768px) {
+    #employeesPage input.search {
+        width: 300px;
+    }
+
+    #employeesPage .main-search-box button {
+        left: 256px;
+    }
+
+    #employeesPage .login-title-box h1 {
+        font-size: 16px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+}
+
+@media(max-width:585px) {
+    #employeesPage .padding-box.pdlb {
+        max-width: 90vw;
+        overflow-x: scroll;
+    }
+
+    #employeesPage .pagination a {
+        padding: 5px 10px;
+    }
+
+    #employeesPage #name,
+    #email,
+    #role {
+        padding: 5px 10px;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    #employeesPage .buttons {
+        display: flex;
+        justify-content: end;
+    }
+
+    #employeesPage button.star-btn.next_button {
+        margin-top: 0;
+    }
+
+    #employeesPage .star-btn {
+        padding: 7px 40px;
+    }
+}

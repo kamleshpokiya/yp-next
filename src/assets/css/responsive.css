@@ -1,0 +1,1239 @@
+@media(max-width: 1655px) {
+
+    .aside-main-box {
+        padding: 20PX 20px;
+    }
+
+    .aside-listing ul li:first-child>a>img {
+        width: 25px !important;
+        margin-top: -108px;
+    }
+
+    .aside-listing ul li.active a:before {
+        min-height: 60px !important
+    }
+
+    .aside-listing ul li a img {
+        margin-top: -88px;
+        width: 22px;
+    }
+
+    .progress-bar li::after {
+        right: 7px;
+    }
+
+    .msg {
+        left: 65px;
+        top: 13px;
+        padding: 5px 38px;
+    }
+
+    .aside-listing ul li a svg {
+        margin-top: -110px;
+        width: 33px;
+    }
+
+    .project {
+        height: 140px;
+    }
+
+    .checkbox-title {
+        gap: 5px;
+    }
+
+    .checkbox {
+        gap: 5px;
+    }
+
+    .project-box {
+        padding: 20px 20px;
+    }
+
+    a#v-pills-home-tab {
+        font-size: 14px;
+    }
+
+
+
+    label.team-checkbox img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .checkbox-dis p {
+        font-size: 11px;
+    }
+
+    label.team-checkbox span {
+        font-size: 12px;
+    }
+
+    .title-box h3 {
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 1365px) {
+
+    .toggle-right {
+        position: absolute;
+        background: #fff;
+        width: 500px;
+        right: 45px;
+        transition: all 0.5s;
+    }
+
+    div#first {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+
+    .aside-main-box {
+        padding: 20PX 16px;
+    }
+
+    .aside-listing ul li a svg {
+        margin-top: -105px;
+        width: 30px;
+    }
+
+    .iconbox img {
+        width: 40px;
+    }
+
+    .dis p {
+        font-size: 12px;
+    }
+
+    .checkbox input[type=checkbox] {
+        border: 1px solid #000;
+        margin: 0 0px 0 0;
+        height: 15px;
+        width: 15px;
+    }
+
+    .msg-section {
+        position: absolute;
+        top: 7px;
+        right: -45px;
+    }
+
+    nav.navigation {
+        margin-right: 10px;
+
+    }
+
+    .col-lg-3 {
+        padding-right: 0px;
+    }
+
+    div#first {
+        position: absolute;
+        right: 47px;
+        top: 47px;
+    }
+
+    .rightSide {
+        padding-right: 0;
+    }
+
+    .aside-listing ul li:first-child>a>img {
+        width: 23px !important;
+        margin-top: -103px;
+    }
+
+    .aside-listing ul li.active a:before {
+        min-height: 55px !important
+    }
+
+    .aside-listing ul li a img {
+        margin-top: -83px;
+        width: 20px;
+    }
+
+    .msg {
+        left: 52px;
+        top: 13px;
+        padding: 3px 38px;
+    }
+
+
+
+
+
+    label.team-checkbox img {
+        height: 58px;
+        width: 60px;
+    }
+
+    .checkbox-dis p {
+        font-size: 10px;
+    }
+
+    label.team-checkbox span {
+        font-size: 10px;
+    }
+
+    .title-box h3 {
+        font-size: 16px;
+    }
+
+    .progress-bar li::after {
+        right: -3px;
+    }
+}
+
+@media(max-width:1199px) {
+    .col-xl-6 {
+        padding: 0;
+    }
+
+    .col-lg-2 {
+        max-width: 15.666667% !important;
+    }
+
+    .msg-section {
+        right: -63px;
+    }
+
+    .first-box {
+        margin-bottom: 20px;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    .aside-listing ul li a svg {
+        margin-top: -100px;
+        width: 30px;
+    }
+
+    .aside-main-box {
+        padding: 20px 8px;
+    }
+
+    .aside-listing ul li:first-child>a>img {
+        width: 21px !important;
+        margin-top: -100px;
+    }
+
+    .aside-listing ul li.active a:before {
+        min-height: 50px !important
+    }
+
+    .aside-listing ul li a img {
+        margin-top: -79px;
+        width: 16px;
+    }
+
+    .msg {
+        left: 52px;
+        top: 13px;
+        padding: 3px 38px;
+    }
+
+    .project-des-main-box {
+        padding: 10px;
+    }
+
+    .title-boxs h3 {
+        font-size: 14px;
+    }
+
+    .top {
+        font-size: 11px;
+    }
+
+    .title-boxs {
+        margin-bottom: 25px;
+    }
+
+    .des-boxs {
+        margin-bottom: 15px;
+    }
+
+    .pdf img {
+        width: 20px;
+    }
+
+
+    .msg-section {
+        right: -44px;
+    }
+
+    .listing-box {
+        padding: 20px 60px 20px 20px;
+    }
+
+    .toggle-right {
+        width: 500px;
+    }
+
+    label.team-checkbox img {
+        height: 60px;
+        width: 60px;
+    }
+
+    label.team-checkbox span {
+        font-size: 14px;
+    }
+
+    .checkbox-dis p {
+        font-size: 12px;
+    }
+
+    .progress-bar li::after {
+        right: -13px;
+    }
+}
+
+@media(max-width:991px) {
+    .page {
+        overflow: auto;
+    }
+
+    .checkbox input[type=checkbox] {
+        margin: 0px 10px 0 0;
+        height: 20px;
+        width: 20px;
+    }
+
+    div#v-pills-settings-tab {
+        margin-top: 0;
+    }
+
+    div#first {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .search-btn {
+        padding: 0 20px 20px 0;
+    }
+
+    .project-box {
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        background: none;
+        padding: 0;
+        margin: 10px 0;
+
+
+    }
+
+    div#v-pills-tab {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    .project-btn-box .active::after {
+        display: none;
+    }
+
+    .img-box {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+
+    }
+
+    .col-lg-2 {
+        max-width: 100% !important;
+    }
+
+    a#v-pills-settings-tab {
+        padding: 0;
+        width: 80px;
+        height: 55px;
+    }
+
+    .project-main-box.left {
+        height: 80px;
+        width: 60%;
+        overflow: auto;
+    }
+
+    .title-box {
+        DISPLAY: NONE;
+    }
+
+    .nav-link {
+        padding: 8px 20px;
+    }
+
+    .flex-column {
+        flex-direction: unset !important;
+    }
+
+    .project {
+        height: auto;
+        text-align: right;
+    }
+
+    .project-main-box .project {
+        background: none;
+
+    }
+
+    .col-lg-11 {
+        max-width: 100%;
+        padding: 0 30px;
+        height: 100vh;
+    }
+
+    .aside-listing ul li a svg {
+        margin-top: -110px;
+        width: 33px;
+    }
+
+    .aside-listing ul li.active a:before {
+        min-height: 60px !important;
+    }
+
+    .aside-listing ul li:first-child>a>img {
+        width: 25px !important;
+        margin-top: -109px;
+    }
+
+    .menu-btn {
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: 7px;
+    }
+
+    .menu-btn svg {
+        height: 25PX;
+    }
+
+    .col-md-1.aside-content-box {
+        position: absolute;
+    }
+
+    input.search {
+        width: 150%;
+    }
+
+    .main-search-box button {
+        left: 263px;
+        top: 3px;
+    }
+
+    .main-btn-box .btn {
+        width: 130px;
+    }
+
+    .col-md-11 {
+        padding: 0 10px;
+    }
+
+    .msg-section {
+        right: -93px;
+    }
+
+    .aside-main-box {
+        padding: 20px 30px;
+        position: absolute;
+        z-index: 111;
+        left: -120px;
+        transition: all .5s;
+    }
+
+    .asider {
+        left: 0px !important;
+    }
+
+    .aside-listing ul li:nth-child(7) {
+        display: block;
+    }
+
+    .aside-listing ul li:nth-child(8) {
+        display: block;
+    }
+
+    .msg-section {
+        display: none;
+    }
+
+    .aside-listing ul li a img {
+        margin-top: -88px;
+        width: 20px;
+    }
+
+    nav.navigation {
+        padding: 10px 20px;
+    }
+
+
+    .aside-listing .notification .droupdown-main-box {
+        position: absolute;
+        z-index: 999;
+        background: #fff;
+        width: 430px;
+        BOX-SHADOW: 0px 6px 15px rgb(180 180 183 / 40%);
+        padding: 0 !important;
+        border-radius: 8px;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .5s;
+        min-height: 200px;
+        left: 96px;
+        top: -348px;
+        float: left;
+        text-align: left !important;
+    }
+
+    .notification .droupdown-main-box::before {
+        content: "";
+        position: absolute;
+        top: 377px;
+        left: -28px;
+        right: 555px;
+        margin-top: -10px;
+        border-width: 15px;
+        border-style: solid;
+        border-color: transparent #fff transparent transparent;
+        rotate: 360deg;
+    }
+
+
+    .login-title-box h1 {
+        margin-top: 25px;
+    }
+
+    .left-side {
+        margin-top: 25px;
+    }
+
+    .account-box {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+    button.star-btn.next_button {
+        width: 130PX;
+    }
+
+    button.submit_button.star-btn {
+        width: 130px;
+    }
+
+    div#v-pills-tab {
+        margin: 0;
+    }
+
+    button svg {
+        width: 20px;
+    }
+
+
+
+
+    nav.navigation {
+        margin-right: 0px;
+    }
+
+    .project-des-main-box {
+        padding: 20px;
+    }
+
+    .title-boxs h3 {
+        font-size: 16px;
+    }
+
+    .top {
+        font-size: 13px;
+    }
+
+    .title-boxs {
+        margin-bottom: 35px;
+    }
+
+    .des-boxs {
+        margin-bottom: 20px;
+    }
+
+    .pdf img {
+        width: 25px;
+    }
+
+    div#v-pills-tab {
+        flex-wrap: unset;
+    }
+
+    .secend-box.col-xl-7 {
+        padding-right: 0 !important;
+        padding-left: 0;
+    }
+
+    .first-box.col-xl-5 {
+        padding-left: 0 !important;
+        padding-right: 0;
+
+    }
+
+    .input .main-search-box .secend-box button {
+        right: 3px;
+    }
+
+    .input .main-search-box .first-box button {
+        right: 3px;
+    }
+
+    .input-main-box .form__container {
+        font-size: 16px;
+    }
+
+    .title h3 {
+        font-size: 16px;
+    }
+
+    .title h6 {
+        font-size: 13px;
+        margin-left: 10px;
+    }
+
+    .title .red::before {
+        right: 70px;
+    }
+
+    .title .yellow::before {
+        right: 119px;
+
+    }
+
+    .title .green::before {
+        right: 119px;
+    }
+
+    .note-box p {
+        font-size: 12px;
+
+    }
+
+    .progress-bar li::after {
+        right: 40px;
+    }
+}
+
+@media(max-width:768px) {
+    .nav-link {
+        padding: 6px 20px;
+    }
+
+    .nav-link {
+        height: 35px;
+        width: 120px;
+    }
+
+    .project-main-box.left {
+        height: 80px;
+        width: 70%;
+        overflow: auto;
+    }
+
+    div#v-pills-tab {
+        margin: 0;
+    }
+
+    .title {
+        display: block;
+    }
+
+    .title .green::before {
+        right: 0;
+        left: -12px;
+    }
+
+    .title .red::before {
+        right: 0;
+        left: -12px;
+    }
+
+    .title .yellow::before {
+        right: 0;
+        left: -12px;
+    }
+
+    .title h6 {
+        margin: 10px 0px 10px 14px;
+    }
+
+    .date-time {
+        margin-bottom: 80px;
+    }
+
+    .project-doct span:before {
+        width: 6px;
+        height: 6px;
+    }
+
+    .project-doct span:after {
+        width: 6px;
+        height: 6px;
+    }
+
+    .project-doct span {
+        width: 6px;
+        height: 6px;
+    }
+
+    .project-doct {
+        right: 10px;
+        top: 0;
+    }
+
+    .listing-box {
+        padding: 20px 30px 20px 20px;
+    }
+
+    .msg-section {
+        right: -80px;
+    }
+
+
+    .toggle-right {
+        width: 350px;
+    }
+
+
+    #name, #email, #number, #comment {
+        padding: 7px 7px;
+    }
+
+    input#inputDate {
+        padding: 17px 7px;
+    }
+
+    input.search {
+        padding: 7px;
+    }
+
+    .input .main-search-box button {
+        width: 30px;
+        height: 31px;
+    }
+
+    .input .main-search-box .first-box button {
+        width: 30px;
+        height: 31px;
+    }
+
+    .input .main-search-box .secend-box button {
+        width: 30px;
+        height: 31px;
+    }
+
+
+
+    .main-search-box button {
+        width: 30px;
+        height: 31px;
+    }
+
+    div#first {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .main-btn-box .btn,
+    button.submit_button.star-btn,
+    button.star-btn.pre_button,
+    button.star-btn.next_button,
+    .catagory-main-box button.add-more_button.star-btn {
+        width: 100px;
+        font-size: 12px;
+    }
+
+    .progress-bar li::after {
+        right: 15px;
+    }
+}
+
+@media(max-width:585px) {
+    .button-box .btn-box1 {
+        margin-bottom: 15px;
+    }
+
+    .input .main-search-box button {
+        height: 30px;
+        width: 30px;
+
+    }
+
+    .project-main-box.left {
+        height: 80px;
+        width: 80%;
+        overflow: auto;
+    }
+
+    .title h6 {
+        display: inline-block;
+        position: relative;
+        font-size: 14px;
+        margin: 10px 0px 0px 0px;
+    }
+
+    .title h3 {
+        font-size: 24px;
+    }
+
+    .msg-listing ul li {
+        margin: 16px 31px;
+        padding: 13px 0;
+    }
+
+    .msg-section {
+        right: -74px;
+    }
+
+    .main-search-box button {
+        left: 172px;
+        top: 4px;
+        height: 30px;
+        width: 30px;
+
+    }
+
+    input.search {
+        width: 100%;
+    }
+
+    .main-btn-box .btn {
+        width: 100px;
+    }
+
+    input.search {
+        padding: 7px 10px;
+    }
+
+    button.btn {
+        padding: 7px;
+    }
+
+    .listing-box {
+        display: block;
+        text-align: center;
+    }
+
+    .lower-part {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-box {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .title {
+        margin-bottom: 20px
+    }
+
+    .title .green::before {
+
+        left: -15px;
+    }
+
+    .title .red::before {
+
+        left: -20px;
+    }
+
+    .title .yellow::before {
+
+        left: -15px;
+    }
+
+    .date-time {
+        margin: 0;
+    }
+
+    .project-doct {
+        right: 20px;
+        top: 10px;
+    }
+
+    .alert p {
+        font-size: 12px;
+        padding-bottom: 10px;
+    }
+
+    .alert h4 {
+        font-size: 14px;
+        margin-bottom: 5px;
+        padding-top: 10px;
+
+    }
+
+    .aside-listing .notification .droupdown-main-box {
+        top: -380px;
+        width: 300px;
+    }
+
+    .droupdown-main-box {
+        width: 150px;
+    }
+
+    .notification .droupdown-main-box::before {
+        top: 406px;
+        left: -29px;
+    }
+
+    .aside-main-box {
+        padding: 20px 20px;
+    }
+
+
+    .login-title-box h1 {
+        margin-top: 20px;
+    }
+
+    .input .main-search-box .first-box button {
+        width: 30px;
+        height: 30px;
+        top: 2px;
+    }
+
+    .input .main-search-box .secend-box button {
+        width: 30px;
+        height: 30px;
+        top: 2px;
+    }
+
+    .toggle-right {
+        width: 300px;
+    }
+
+
+
+    .title-boxs h3 {
+        font-size: 16px;
+    }
+
+    .top {
+        font-size: 13px;
+    }
+
+    /* .forms {
+        width: 350px;
+    } */
+
+    .input-main-box .form__container {
+        font-size: 14px;
+    }
+
+    div#first {
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+
+    .title-boxs {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    label.team-checkbox span.team-mem {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+
+    label.team-checkbox span.team-dis {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    label.team-checkbox img {
+        height: 40px;
+        width: 40px;
+    }
+
+    i.fa-solid.fa-file-pdf, i.fa-solid.fa-file-image {
+        font-size: 18px;
+        color: #454545;
+    }
+
+    .yk-main-box.scroll-box {
+        height: 190px;
+    }
+    .progress-bar li::after {
+        right: -5px;
+    }
+}
+
+@media(max-width:480px) {
+    .title h3 {
+        font-size: 18px;
+    }
+
+    .title h6 {
+        font-size: 13px;
+    }
+
+    .note-box p {
+        font-size: 11px;
+    }
+
+    .date-time p {
+        font-size: 11px;
+    }
+
+    .search-btn {
+        DISPLAY: block;
+    }
+
+    .btn-box2 .label {
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .btn-box1 .label {
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .main-btn-box .btn {
+        width: 100%;
+    }
+
+    input.search {
+        padding: 7px 10px;
+        margin-bottom: 15px;
+    }
+
+    .main-search-box button {
+        left: unset;
+        right: 21px;
+    }
+
+    .aside-listing .notification .droupdown-main-box {
+        top: -402px;
+        width: 250px;
+    }
+
+    .notification .droupdown-main-box::before {
+        top: 424px;
+        left: -29px;
+    }
+
+
+    .toggle-right {
+        width: 250px;
+    }
+
+    ul.progress-bar {
+        padding: 0px 0px 0px 50px;
+    }
+
+    .progress-bar li {
+        margin-right: 100px;
+    }
+
+    .progress-bar li::before {
+        height: 40px;
+        width: 40px;
+    }
+
+    nav.navigation {
+        padding: 10px 6px 10px 20px;
+    }
+
+    .listing-box {
+        padding: 10px 20px 10px 10px;
+        margin-right: 0;
+    }
+
+    .search-btn {
+        padding: 0 10px 20px 0;
+    }
+
+    .rightSide {
+        padding-right: 0;
+        padding: 0;
+    }
+
+    .card.col-lg-6 {
+        padding: 0;
+    }
+
+    .project-doct {
+        right: 15px;
+        top: 10px;
+    }
+
+    .droupdown-main-box .droupdown ul li a {
+        font-size: 12px;
+    }
+
+    .droupdown-main-box .droupdown ul li {
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+
+    .droupdown-main-box {
+        width: 100px;
+    }
+
+    .project-main-box.left {
+        height: 80px;
+        width: 90%;
+        overflow: auto;
+    }
+
+    /* .forms {
+        width: 300px;
+    } */
+    .progress-bar li::after {
+        right: 5px;
+        top: -44px;
+    }
+}
+
+@media(max-width:360px) {
+    .title h3 {
+        font-size: 18px;
+    }
+
+    .title h6 {
+        font-size: 12px;
+    }
+
+    .note-box p {
+        font-size: 12px;
+    }
+
+    .date-time p {
+        font-size: 12px;
+    }
+
+    .main-search-box button {
+        top: 2px;
+        left: unset;
+        RIGHT: 2px !important;
+    }
+
+    .search-btn {
+        padding: 0px 0 0 0;
+    }
+
+    input.search {
+        padding: 7px 10px;
+        margin-bottom: 15px;
+    }
+
+    .search-btn {
+        display: block;
+    }
+
+    .main-search-box {
+        position: relative;
+    }
+
+    .main-btn-box .btn {
+        width: 100%;
+    }
+
+    .button-box {
+        display: block;
+    }
+
+    .lower-part {
+        display: block;
+    }
+
+    .button-box .btn-box1 .btn {
+        width: 100%;
+    }
+
+    .button-box .btn-box2 .btn {
+        width: 100%;
+    }
+
+    .date-time {
+
+        margin: 10px 0;
+    }
+
+    .navigation .list a {
+        font-size: 12px;
+    }
+
+    .aside-main-box {
+        padding: 20px 20px;
+    }
+
+    .aside-listing .notification .droupdown-main-box {
+        top: -435px;
+        width: 200px;
+        left: 85px;
+    }
+
+    .notification .droupdown-main-box::before {
+        top: 458px;
+        left: -29px;
+    }
+
+    .toggle-right {
+        width: 150px;
+    }
+
+    .project-des-main-box {
+        padding: 0;
+    }
+
+
+
+    ul.progress-bar {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .progress-bar li {
+        margin-right: 70px;
+    }
+
+    .progress-bar li::before {
+        height: 40px;
+        width: 40px;
+    }
+
+    .project-main-box.left {
+        height: 80px;
+        width: 100%;
+        overflow: auto;
+    }
+
+    /* .forms {
+        width: 200px;
+    } */
+
+    .input-main-box .form__container {
+        font-size: 13px;
+        height: 150px;
+    }
+
+    .add-edit {
+        justify-content: center;
+    }
+
+    .listing-box {
+        padding: 10px 10px 10px 10px;
+    }
+
+    .project-doct {
+        right: 15px;
+        top: 30px;
+    }
+    .progress-bar li::after {
+        right: -3px;
+        top: -45px;
+    }
+}
