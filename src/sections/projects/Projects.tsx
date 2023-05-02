@@ -1,12 +1,19 @@
+// packages
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+// components
 import ApplyFilter from '@/components/ApplyFilter';
 import SearchBox from '@/components/SearchBox';
+// sections
 import ProjectCard from '@/sections/projects/ProjectCard';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/reducers';
-import { getProjectsByStatus } from '@/store/actions/projects';
-import { useState, useEffect } from 'react';
+// store
+import { RootState } from '@/store/rootReducer';
+import { getProjectsByStatus } from '@/store/selectors/projects';
+// types
 import { Project } from '@/types';
 
+
+// types
 type ProjectsProps = {
     status: string,
 };

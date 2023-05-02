@@ -1,6 +1,10 @@
+// packages
 import { faker } from '@faker-js/faker';
+// types
 import { Team } from '@/types';
+// _mock
 import members from './members';
+// utils
 import { getMembersIds } from '@/utils/common';
 
 const teamNames = [

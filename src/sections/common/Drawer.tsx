@@ -1,13 +1,19 @@
-import useToggle from '@/hooks/useToggle';
-import { RootState } from '@/store/reducers';
-import { useSelector, useDispatch } from 'react-redux';
-import IMAGES from '@/assets/img';
+// packages
 import Image from 'next/image';
-import { removeProjectDetailsId } from '@/store/reducers/actionsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+// hooks
+import useToggle from '@/hooks/useToggle';
+// store
+import { RootState } from '@/store/rootReducer';
+import { removeProjectDetailsId } from '@/store/slices/actions';
+import { getMembers } from '@/store/selectors/members';
+import { getTeams } from '@/store/selectors/teams';
+// images
+import IMAGES from '@/assets/img';
+// utils
 import { formatDate } from '@/utils/formatDate';
+// components
 import Assigners from '@/components/Assigners';
-import { getMembers } from '@/store/actions/members';
-import { getTeams } from '@/store/actions/teams';
 
 
 const MAX_CONTENT = 100;

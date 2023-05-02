@@ -1,7 +1,11 @@
-import { Member } from '@/types';
+// packages
 import { faker } from '@faker-js/faker';
-import designations from './designations';
 import { sample } from 'lodash';
+// types
+import { Member } from '@/types';
+// _mock
+import designations from './designations';
+
 
 const members: Member[] = new Array(10).fill(0).map(() => ({
     id: faker.datatype.uuid(),

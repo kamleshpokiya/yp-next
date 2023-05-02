@@ -1,4 +1,5 @@
-import { RootState } from "../reducers";
+// store
+import { RootState } from '../rootReducer';
 
 export const getProjectsByStatus = (state: RootState, status: string) => {
     if (status === 'newProjects') {

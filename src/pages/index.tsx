@@ -1,3 +1,4 @@
-import Projects from "./projects";
+// pages
+import Projects from './projects';
 
 export default Projects;

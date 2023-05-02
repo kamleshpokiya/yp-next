@@ -1,12 +1,19 @@
+// packages
 import { Formik, Form } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
+// components
 import SearchBox from '@/components/SearchBox';
-import { Project } from '@/types';
+// types
+import { Project, Task } from '@/types';
+// _mock
 import categories from '@/_mock/categories';
+// form
 import AddCategory from './AddCategory';
 import FileUpload from './FileUpload';
 
+
+// types
 type FormatedCategory = {
     id: string,
     label: string,
@@ -14,9 +21,9 @@ type FormatedCategory = {
 };
 
 type Step3Props = {
-    onNext: (values: Project, isLastStep?: boolean) => void,
-    onPrev: (values: Project) => void,
-    data: Project,
+    onNext: (values: Project | Task, isLastStep?: boolean) => void,
+    onPrev: (values: Project | Task) => void,
+    data: Project | Task,
     isEditMode?: boolean,
 };
 
@@ -38,7 +45,7 @@ const Step3 = ({ data, onNext, onPrev, isEditMode }: Step3Props) => {
         value: category,
     }));
 
-    const mergeAll = (values: Project) => {
+    const mergeAll = (values: Project | Task) => {
         const categories: string[] = selectedCategories.map((category) => category.value);
 
         return {
@@ -47,12 +54,12 @@ const Step3 = ({ data, onNext, onPrev, isEditMode }: Step3Props) => {
         }
     };
 
-    const handleNext = (values: Project) => {
+    const handleNext = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onNext(newValues, true);
     }
 
-    const handlePrev = (values: Project) => {
+    const handlePrev = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onPrev(newValues);
     }

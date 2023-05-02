@@ -1,7 +1,11 @@
-import useToggle from '@/hooks/useToggle';
-import OutsideClickHandler from 'react-outside-click-handler';
+// packages
 import { useState } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
+// hooks
+import useToggle from '@/hooks/useToggle';
 
+
+// types
 type FormatedCategory = {
     id: string,
     label: string,

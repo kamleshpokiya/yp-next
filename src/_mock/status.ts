@@ -1,3 +1,4 @@
+// types
 type StatusColor = {
     [key: string] : string,
 };

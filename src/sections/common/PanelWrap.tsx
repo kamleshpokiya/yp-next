@@ -1,10 +1,15 @@
+// packages
 import { ReactNode } from 'react';
-import IMAGES from '@/assets/img';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
-import { onSidePanelClose } from '@/store/reducers/actionsSlice';
-import { RootState } from '@/store/reducers';
+// images
+import IMAGES from '@/assets/img';
+// store
+import { onSidePanelClose } from '@/store/slices/actions';
+import { RootState } from '@/store/rootReducer';
 
+
+// types
 type PanelWrapProps = {
     children: ReactNode
 };

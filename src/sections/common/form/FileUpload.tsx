@@ -1,7 +1,10 @@
+// packages
 import Image from 'next/image';
 import { useState } from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 
+
+// types
 type FilePreview = {
     file: File;
     previewUrl: string;
@@ -45,7 +48,7 @@ const FileUpload = () => {
                         {filePreviews.map(({ file, previewUrl }, index) => (
                             <div key={file.name} className="form__image-container js-remove-image" onClick={() => handleRemove(index)}>
                                 {file.type.startsWith('image/') ? (
-                                    <Image src={previewUrl} alt={file.name} className="form__image" />
+                                    <Image src={previewUrl} alt={file.name} className="form__image" width={100} height={100} />
                                 ) : (
                                     <div className="file-icon form__image" />
                                 )}

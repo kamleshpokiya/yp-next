@@ -1,39 +1,37 @@
-import { ActionPanel, Projects as AllProjects } from '@/sections/projects';
+// packages
 import Head from 'next/head';
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store/reducers';
+// sections
+import { ActionPanel, Projects as AllProjects } from '@/sections/projects';
 import Drawer from '@/sections/common/Drawer';
 import Form from '@/sections/common/form';
-import { Project } from '@/types';
-import { addProject, updateProject } from '@/store/reducers/projectsSlice';
-import { onProjectTabChange } from '@/store/reducers/actionsSlice';
+// store
+import { RootState } from '@/store/rootReducer';
+import { addProject, updateProject } from '@/store/slices/projects';
+import { onProjectTabChange } from '@/store/slices/actions';
+// types
+import { Project, Task } from '@/types';
+
 
 const Projects = () => {
     const dispatch = useDispatch();
-    const projects = useSelector((state: RootState) => state.projects);
     const currentTab = useSelector((state: RootState) => state.actions.currentProjectTab);
 
-    const onSubmit = (values: Project, isEditMode = false) => {
+    const onSubmit = (values: Project | Task, isEditMode = false) => {
         const serializedValues = {
             ...values,
             dueDate: new Date(values.dueDate).toISOString(),
         };
 
         if (isEditMode) {
-            console.log('project updated');
             dispatch(updateProject(serializedValues));
         } else {
-            console.log('project created');
             dispatch(addProject(serializedValues));
         }
 
         dispatch(onProjectTabChange(values.status === 'Pending Allocation' ? 'newProjects' : 'inProgressProjects'));
     }
-
-    useEffect(() => {
-        console.log('projects: ', projects);
-    }, [projects]);
 
     return (
         <Fragment>
@@ -47,11 +45,7 @@ const Projects = () => {
                 <div className="col-lg-7 rightSide">
                     <div className="col-lg-7 rightSide">
                         <div className="tab-content" id="v-pills-tabContent">
-                            {currentTab === 'addProject' &&
-                                <Form
-                                    onSubmit={onSubmit}
-                                />
-                            }
+                            {currentTab === 'addProject' && <Form onSubmit={onSubmit} />}
                             {currentTab !== 'addProject' && <AllProjects status={currentTab} />}
                         </div>
                     </div>

@@ -1,15 +1,20 @@
-import IMAGES from "@/assets/img";
-import Assigners from "@/components/Assigners";
-import Iconify from "@/components/Iconify";
-import { getMembers } from "@/store/actions/members";
-import { getTeam } from "@/store/actions/teams";
-import { RootState } from "@/store/reducers";
-import Image from "next/image";
-import { useSelector } from "react-redux";
-import { onRemoveMemberFromTeam, onRemoveTeam } from "@/store/reducers/teamsSlice";
-import { useDispatch } from "react-redux";
-import { faker } from "@faker-js/faker";
+// packages
+import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// images
+import IMAGES from '@/assets/img';
+// components
+import Assigners from '@/components/Assigners';
+import Iconify from '@/components/Iconify';
+// store
+import { getMembers } from '@/store/selectors/members';
+import { getTeam } from '@/store/selectors/teams';
+import { RootState } from '@/store/rootReducer';
+import { onRemoveMemberFromTeam, onRemoveTeam } from '@/store/slices/teams';
 
+
+// types
 type TeamDrawerProps = {
     id: string,
     onClose: () => void,

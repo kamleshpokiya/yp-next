@@ -1,6 +1,8 @@
+// packages
 import { forwardRef, ForwardRefRenderFunction } from 'react';
 import { Icon } from '@iconify/react';
 
+// types
 interface IconifyProps {
     icon: string;
     width?: number | string;

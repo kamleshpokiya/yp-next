@@ -1,8 +1,10 @@
-import IMAGES from '@/assets/img';
-import useToggle from '@/hooks/useToggle';
-import Image from 'next/image';
+// packages
 import OutsideClickHandler from 'react-outside-click-handler';
+// hooks
+import useToggle from '@/hooks/useToggle';
+// _mock
 import notifications from '@/_mock/notifications';
+// components
 import Iconify from '@/components/Iconify';
 
 

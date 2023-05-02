@@ -1,23 +1,55 @@
-import { ReactNode } from 'react';
+// packages
+import { ReactNode, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import OutsideClickHandler from 'react-outside-click-handler';
+// layouts
 import NavBar from './NavBar';
 import Header from './Header';
 import SideBar from './SideBar';
+import Auth from './auth';
+// store
+import { RootState } from '@/store/rootReducer';
+import { handleEditTaskId, removeProjectDetailsId } from '@/store/slices/actions';
+// hooks
+import useToggle from '@/hooks/useToggle';
 
+
+// types
 type LayoutProps = {
     children: ReactNode
 };
 
 const Layout = ({ children }: LayoutProps) => {
+    const isLoggedIn = useSelector((state: RootState) => state.account.isLoggedIn);
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const { isOpen, onOpen, onClose } = useToggle();
+
+    useEffect(() => {
+        dispatch(removeProjectDetailsId());
+        dispatch(handleEditTaskId(null));
+    }, [router.asPath]);
+
+    if (!isLoggedIn) {
+        return (
+            <Auth />
+        );
+    };
+
     return (
         <div className="page">
             <div className="wraper">
                 <div className="row">
                     <div className="col-md-1 aside-content-box">
-                        <NavBar />
+                        <OutsideClickHandler onOutsideClick={onClose}>
+                            <NavBar isNavBarOpen={isOpen} />
+                        </OutsideClickHandler>
                     </div>
 
                     <div className="col-md-12  col-lg-11">
-                        <Header />
+                        <Header onNavBarOpen={onOpen} />
 
                         <section>
                             {children}

@@ -1,7 +1,12 @@
-import Assigners from "@/components/Assigners";
-import { RootState } from "@/store/reducers";
-import { useSelector } from "react-redux";
+// packages
+import { useSelector } from 'react-redux';
+// components
+import Assigners from '@/components/Assigners';
+// store
+import { RootState } from '@/store/rootReducer';
 
+
+// types
 type TeamPreviewProps = {
     onItemClick: (id: string) => void,
 };

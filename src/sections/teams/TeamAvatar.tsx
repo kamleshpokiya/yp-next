@@ -1,16 +1,31 @@
-import Iconify from "@/components/Iconify";
-import Image from "next/image";
+// packages
+import Image from 'next/image';
 import { useState } from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
+import { useSelector } from 'react-redux';
+// images
+import IMAGES from '@/assets/img';
+// components
+import Iconify from '@/components/Iconify';
+// store
+import { RootState } from '@/store/rootReducer';
 
+
+// types
 type FilePreview = {
     file: File;
     previewUrl: string;
 }
 
+type TeamAvatarProps = {
+    isDefaultAvatarImage?: boolean
+};
 
-const TeamAvatar = () => {
+
+const TeamAvatar = ({ isDefaultAvatarImage }: TeamAvatarProps) => {
     const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
+    const defaultAvatar = useSelector((state: RootState) => state.account.avatar);
+    const { boyAvatar } = IMAGES;
 
     const handleDrop = async (acceptedFiles: File[]) => {
         const newPreviews = await Promise.all(
@@ -54,6 +69,13 @@ const TeamAvatar = () => {
                                         />
                                     )}
                                 </div>
+                            ) : isDefaultAvatarImage ? (
+                                <Image
+                                    src={defaultAvatar ?? boyAvatar.src} alt={boyAvatar.alt}
+                                    className="form__image"
+                                    width={110}
+                                    height={110}
+                                />
                             ) : (
                                 <Iconify
                                     icon="fa-solid:users"

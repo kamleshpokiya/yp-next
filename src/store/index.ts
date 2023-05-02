@@ -1,12 +1,15 @@
+// packages
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './reducers';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+// store
+import rootReducer from './rootReducer';
+
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['projects', 'teams', 'members', 'tasks'],
+    whitelist: ['projects', 'teams', 'members', 'tasks', 'account', 'comments'],
     blacklist: ['actions'],
 };
 

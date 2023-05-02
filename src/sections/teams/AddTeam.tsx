@@ -1,14 +1,24 @@
-import { Formik, Form } from 'formik';
+// packages
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+import { Formik, Form, FormikHelpers } from 'formik';
+// components
 import InputField from '@/components/InputField';
 import SearchBox from '@/components/SearchBox';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/reducers';
-import { useState } from 'react';
-import { Member } from '@/types';
 import Assigners from '@/components/Assigners';
-import { useDispatch } from 'react-redux';
-import { onAddTeam } from '@/store/reducers/teamsSlice';
+// store
+import { RootState } from '@/store/rootReducer';
+import { onAddTeam } from '@/store/slices/teams';
+// types
+import { Member } from '@/types';
+
+
+// types
+type AddTeamProps = {
+    onClose: () => void,
+};
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Please enter your team name'),
@@ -22,7 +32,7 @@ const initialValues: InitialValue = {
     name: '',
 };
 
-const AddTeam = () => {
+const AddTeam = ({ onClose }: AddTeamProps) => {
     const [selectedMember, setSelectedMember] = useState<Member | null>(null);
     const [checkedMembers, setCheckedMembers] = useState<string[]>([]);
     const [error, setError] = useState<string | null>(null);
@@ -43,7 +53,7 @@ const AddTeam = () => {
     const formatedMembers = members.map(formateMember);
     const formatedMember = formateMember(selectedMember);
 
-    const handleSubmit = (values: InitialValue) => {
+    const onSubmit = (values: InitialValue, { resetForm }: FormikHelpers<InitialValue>) => {
         if (!checkedMembers.length) {
             setError('Please select atleast one member');
         } else {
@@ -54,6 +64,8 @@ const AddTeam = () => {
             };
 
             dispatch(onAddTeam(newValues));
+            onClose();
+            resetForm();
         }
     }
 
@@ -62,7 +74,7 @@ const AddTeam = () => {
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={(values) => handleSubmit(values)}
+                onSubmit={onSubmit}
             >
                 {({ values }) => (
                     <Form>

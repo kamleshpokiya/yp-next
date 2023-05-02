@@ -1,7 +1,11 @@
-import useToggle from '@/hooks/useToggle';
+// packages
 import Link from 'next/link';
 import OutsideClickHandler from 'react-outside-click-handler';
+// hooks
+import useToggle from '@/hooks/useToggle';
 
+
+// types
 type MenuPopoverProps = {
     id: string | undefined,
 };

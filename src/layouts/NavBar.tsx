@@ -1,12 +1,25 @@
-import IMAGES from '@/assets/img';
+// packages
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
-import { onSidePanelOpen } from '@/store/reducers/actionsSlice';
-import { RootState } from '@/store/reducers';
 import { Tooltip } from 'react-tooltip';
+import { useSelector, useDispatch } from 'react-redux';
+// images
+import IMAGES from '@/assets/img';
+// store
+import { onSidePanelOpen } from '@/store/slices/actions';
+import { RootState } from '@/store/rootReducer';
+// components
 import Iconify from '@/components/Iconify';
+// layouts
+import Account from './Account';
+import Notifications from './Notifications';
+
+
+// types
+type NavBarProps = {
+    isNavBarOpen: boolean,
+};
 
 type NavLinks<T> = {
     href: string,
@@ -14,7 +27,15 @@ type NavLinks<T> = {
     label: string,
 }[];
 
-const { logo, fileIcon, usersIcon, gentalmanIcon, shivLingIcon, payoutIcon, leftArrowIcon } = IMAGES;
+const {
+    logo,
+    fileIcon,
+    usersIcon,
+    gentalmanIcon,
+    shivLingIcon,
+    payoutIcon,
+    leftArrowIcon
+} = IMAGES;
 
 type Icon = typeof logo;
 
@@ -52,14 +73,14 @@ const navLinks: NavLinks<Icon> = [
 ];
 
 
-const NavBar = () => {
+const NavBar = ({ isNavBarOpen }: NavBarProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
 
     return (
         <aside>
-            <div className="aside-main-box">
+            <div className={`aside-main-box ${isNavBarOpen ? 'asider' : ''}`}>
                 <div className="aside-logo">
                     <Image src={logo.src} alt={logo.alt} />
                 </div>
@@ -80,9 +101,16 @@ const NavBar = () => {
                                 </Link>
                             </li>
                         ))}
+
+                        {isNavBarOpen && (
+                            <>
+                                <Account />
+                                <Notifications />
+                            </>
+                        )}
                     </ul>
 
-                    <Tooltip id='nav-link-tooltip' />
+                    <Tooltip id='nav-link-tooltip' style={{ zIndex: 99999 }} />
                 </div>
             </div>
 

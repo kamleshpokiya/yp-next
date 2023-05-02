@@ -1,8 +1,12 @@
+// packages
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import Iconify from './Iconify';
 import { Tooltip } from 'react-tooltip';
+import { useEffect, useState } from 'react';
+// components
+import Iconify from './Iconify';
 
+
+// types
 type Asigner = {
     id: string,
     name: string,

@@ -1,24 +1,28 @@
-import { Member, Project, Team } from '@/types';
+// packages
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import SearchBox from '@/components/SearchBox';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/reducers';
-import Assigners from '@/components/Assigners';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+// types
+import { Member, Project, Task, Team } from '@/types';
+// components
+import SearchBox from '@/components/SearchBox';
+import Assigners from '@/components/Assigners';
+// store
+import { RootState } from '@/store/rootReducer';
 
+
+// types
 type FormatedCategory = {
     id: string,
     label: string,
     value: string,
 };
 
-type Value = Team | Member | Project | FormatedCategory;
-
 type Step2Props = {
-    onNext: (values: Project, isLastStep?: boolean) => void,
-    onPrev: (values: Project) => void,
-    data: Project,
+    onNext: (values: Project | Task, isLastStep?: boolean) => void,
+    onPrev: (values: Project | Task) => void,
+    data: Project | Task,
 };
 
 const validationSchema = Yup.object({
@@ -62,19 +66,20 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
         setSelectedTeam(selected);
     };
 
-    const mergeAll = (values: Project) => ({
+    const mergeAll = (values: Project | Task) => ({
         ...values,
         status: (checkedMembers.length > 0 || checkedTeams.length > 0) ? 'In Progress' : 'Pending Allocation',
         memberIds: checkedMembers,
-        teamIds: checkedTeams
+        teamIds: checkedTeams,
+        deadline: 'Pending Allocation',
     });
 
-    const handleNext = (values: Project) => {
+    const handleNext = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onNext(newValues);
     }
 
-    const handlePrev = (values: Project) => {
+    const handlePrev = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onPrev(newValues);
     }

@@ -1,9 +1,14 @@
-import ActionButton from '@/sections/common/ActionButton';
-import PanelWrap from '../common/PanelWrap';
+// packages
 import { useSelector, useDispatch } from 'react-redux';
-import { onEmployeeTabChanage } from '@/store/reducers/actionsSlice';
-import { RootState } from '@/store/reducers';
+// sections
+import ActionButton from '@/sections/common/ActionButton';
+import PanelWrap from '@/sections/common/PanelWrap';
+// store
+import { onEmployeeTabChanage } from '@/store/slices/actions';
+import { RootState } from '@/store/rootReducer';
 
+
+// types
 type EmployeeTab = {
     type: string,
     label: string,

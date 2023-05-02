@@ -1,4 +1,5 @@
-import { RootState } from "../reducers";
+// store
+import { RootState } from '../rootReducer';
 
 export const getMember = (state: RootState, id: string | null) => {
     if (!id) return null;

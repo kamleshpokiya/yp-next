@@ -1,15 +1,21 @@
+// packages
 import { Formik, Form as FormikForm } from 'formik';
 import * as Yup from 'yup';
-import InputField from '@/components/InputField';
 import { useState } from 'react';
-import SearchBox from '@/components/SearchBox';
-import designations from '@/_mock/designations';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMember, updateMember } from '@/store/reducers/membersSlice';
-import { RootState } from '@/store/reducers';
-import { getMember } from '@/store/actions/members';
-import { onEmployeeTabChanage } from '@/store/reducers/actionsSlice';
+// components
+import InputField from '@/components/InputField';
+import SearchBox from '@/components/SearchBox';
+// _mock
+import designations from '@/_mock/designations';
+// store
+import { addMember, updateMember } from '@/store/slices/members';
+import { RootState } from '@/store/rootReducer';
+import { getMember } from '@/store/selectors/members';
+import { onEmployeeTabChanage } from '@/store/slices/actions';
 
+
+// types
 type InitialValues = {
     name: string,
     email: string,
@@ -49,6 +55,7 @@ const Form = () => {
     };
     const [action, setAction] = useState(member ? 'Update' : 'Add');
     const [values, setValues] = useState<InitialValues>(formatedMember() ?? initialValues);
+    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
     const dispatch = useDispatch();
 
     const handleSubmit = (values: InitialValues) => {
@@ -70,11 +77,11 @@ const Form = () => {
     return (
         <div className="tab-pane fade active show" id="v-pills-settings" role="tabpanel"
             aria-labelledby="v-pills-settings-tab">
-            <div className="padding-box pdlb">
+            <div className={`padding-box ${isSidePanelOpen ? 'pdlb' : ''}`}>
                 <div className="row">
                     <div className="card col-lg-6">
                         <div className="login-title-box">
-                            <h1>Add Employees</h1>
+                            <h1>{action} Employees</h1>
                         </div>
                         <Formik
                             initialValues={values}

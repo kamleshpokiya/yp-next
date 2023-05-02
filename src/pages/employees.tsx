@@ -1,12 +1,13 @@
+// packages
 import { Fragment } from 'react';
 import Head from 'next/head';
-import ActionPanel from '@/sections/employees/ActionPanel';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/store/reducers';
-
+// sections
+import ActionPanel from '@/sections/employees/ActionPanel';
 import Form from '@/sections/employees/Form';
 import Table from '@/sections/employees/Table';
-
+// store
+import { RootState } from '@/store/rootReducer';
 
 
 const Employees = () => {

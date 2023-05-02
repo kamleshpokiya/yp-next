@@ -1,6 +1,9 @@
+// packages
 import { TextareaHTMLAttributes } from 'react';
 import { Field, ErrorMessage } from 'formik';
 
+
+// types
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string;
 }

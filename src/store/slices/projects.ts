@@ -1,7 +1,11 @@
+// packages
 import { createSlice } from '@reduxjs/toolkit';
-import projects from '@/_mock/projects';
 import { faker } from '@faker-js/faker';
+// _mock
+import projects from '@/_mock/projects';
+// types
 import { Project } from '@/types';
+
 
 const initialState: Project[] = projects;
 
@@ -11,8 +15,8 @@ export const projectsSlice = createSlice({
     reducers: {
         addProject: (state, action) => {
             const newProject = {
-                id: faker.datatype.uuid(),
                 ...action.payload,
+                id: faker.datatype.uuid(),
             };
             state.push(newProject);
         },

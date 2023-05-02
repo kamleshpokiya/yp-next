@@ -1,10 +1,17 @@
-import SearchBox from '@/components/SearchBox';
-import { Task } from '@/types';
-import TaskCard from '../TaskCard';
+// packages
 import { useSelector } from 'react-redux';
-import { RootState } from '@/store/reducers';
-import { getTasksByProjectId } from '@/store/actions/tasks';
+// components
+import SearchBox from '@/components/SearchBox';
+// types
+import { Task } from '@/types';
+// sections
+import TaskCard from '@/sections/projectDetails/TaskCard';
+// store
+import { RootState } from '@/store/rootReducer';
+import { getTasksByProjectId } from '@/store/selectors/tasks';
 
+
+// types
 type TasksProps = {
     projectId: string | string[] | undefined,
 };
@@ -13,10 +20,13 @@ const allStatus = ['Todo', 'In Progress', 'Completed'];
 
 const Tasks = ({ projectId }: TasksProps) => {
     const activeTasks = useSelector((state: RootState) => getTasksByProjectId(state, projectId));
+    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
+    const taskDetailsId = useSelector((state: RootState) => state.actions.taskDetailsId);
+    const isTaskDetailsDrawerOpen = Boolean(taskDetailsId);
 
     return (
         <div className="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <div className="padding-box pdlb">
+            <div className={`padding-box ${isSidePanelOpen ? 'pdlb' : ''} ${isTaskDetailsDrawerOpen ? 'pdrb' : ''}`}>
                 <div className="horizonta-scroll-bar-wrap">
                     <SearchBox
                         options={activeTasks}
@@ -33,7 +43,7 @@ const Tasks = ({ projectId }: TasksProps) => {
                                     <div className="tasks scroll-bar-wrap">
                                         <div className="scroll-box">
                                             {activeTasks.map((task, key) => {
-                                                if (task.status !== status) return null;
+                                                if (task.status !== status || task.archived) return null;
 
                                                 return (
                                                     <TaskCard key={key} {...task} />

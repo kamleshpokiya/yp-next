@@ -1,4 +1,5 @@
-import { RootState } from "../reducers";
+// store
+import { RootState } from '../rootReducer';
 
 export const getTeam = (state: RootState, id: string) => {
     return state.teams.find((team) => team.id === id);

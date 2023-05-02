@@ -1,10 +1,12 @@
-// @Plugins
+// packages
 import { StaticImageData } from 'next/image';
-
-// @images
+// images
 import logo from './Yp-logo.png';
+import attachment from './ss.png';
+import teamMember from './team-2.jpg';
+import boyAvatar from './boy.png';
 
-// @icons
+// icons
 import homeIcon from './home.svg';
 import fileIcon from './listing-icon2.png';
 import usersIcon from './listing-icon3.png';
@@ -21,6 +23,7 @@ import documentEditIcon from './edit.png';
 import SearchIcon from './search-icon.svg';
 import ChevronRightIcon from './chevron-double-right.png';
 
+// types
 type Image = {
     src: StaticImageData,
     alt: string,
@@ -35,6 +38,18 @@ const IMAGES:Images = {
     logo: {
         src: logo,
         alt: 'logo',
+    },
+    attachment: {
+        src: attachment,
+        alt: 'Attachment'
+    },
+    teamMember: {
+        src: teamMember,
+        alt: 'Team Member'
+    },
+    boyAvatar: {
+        src: boyAvatar,
+        alt: 'Boy Avatar'
     },
     homeIcon: {
         src: homeIcon,

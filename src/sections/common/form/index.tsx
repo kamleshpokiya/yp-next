@@ -1,23 +1,30 @@
-import { Project } from '@/types';
+// packages
 import { useState } from 'react';
+import Image from 'next/image';
+import { useSelector } from 'react-redux';
+// types
+import { Project, Task } from '@/types';
+// form
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+// images
 import IMAGES from '@/assets/img';
-import Image from 'next/image';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/reducers';
-import { getProjectById } from '@/store/actions/projects';
+// store
+import { RootState } from '@/store/rootReducer';
+import { getProjectById } from '@/store/selectors/projects';
+import { getTaskById } from '@/store/selectors/tasks';
 
-type Action = 'Create' | 'Update';
-type Title = 'Project' | 'Task';
 
+// types
 type FormProps = {
-    onSubmit: (values: Project, isEditMode?: boolean) => void,
+    onSubmit: (values: Project | Task, isEditMode?: boolean) => void,
     initialValues?: Project,
+    formTitle?: string,
 };
 
 const initialProjectValues: Project = {
+    id: '',
     title: '',
     description: '',
     dueDate: new Date(),
@@ -30,22 +37,26 @@ const initialProjectValues: Project = {
 
 const Form = ({
     onSubmit,
+    formTitle,
 }: FormProps) => {
     const editProjectId = useSelector((state: RootState) => state.actions.editProjectId);
     const project = useSelector((state: RootState) => getProjectById(state, editProjectId));
+    const editTaskId = useSelector((state: RootState) => state.actions.editTaskId);
+    const task = useSelector((state: RootState) => getTaskById(state, editTaskId));
+    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
 
-    const [action, setAction] = useState(editProjectId ? 'Update' : 'Create');
-    const [title, setTitle] = useState('Project');
+    const [action, setAction] = useState(editProjectId ? 'Update' : editTaskId ? 'Update' : 'Create');
+    const [title, setTitle] = useState(formTitle ?? 'Project');
     const [currentStep, setCurrentStep] = useState(0);
-    const [data, setData] = useState(project ?? initialProjectValues);
+    const [data, setData] = useState(project ? project : task ? task : initialProjectValues);
     const { ChevronRightIcon } = IMAGES;
 
 
-    const onNext = (data: Project, isLastStep: boolean = false) => {
+    const onNext = (data: Project | Task, isLastStep: boolean = false) => {
         setData(prev => ({ ...prev, ...data }));
 
         if (isLastStep) {
-            const isEditMode = Boolean(editProjectId) ?? false;
+            const isEditMode = editProjectId ? Boolean(editProjectId) : Boolean(editTaskId);
             onSubmit(data, isEditMode);
             return;
         }
@@ -53,19 +64,19 @@ const Form = ({
         setCurrentStep(prev => prev + 1);
     };
 
-    const onPrev = (data: Project) => {
+    const onPrev = (data: Project | Task) => {
         setData(prev => ({ ...prev, ...data }));
         setCurrentStep(prev => prev - 1);
     };
 
     const steps = [
-        <Step1 onNext={onNext} data={data} />,
+        <Step1 onNext={onNext} data={data} title={title} />,
         <Step2 onNext={onNext} onPrev={onPrev} data={data} />,
-        <Step3 onNext={onNext} onPrev={onPrev} data={data} isEditMode={Boolean(editProjectId)} />,
+        <Step3 onNext={onNext} onPrev={onPrev} data={data} isEditMode={editProjectId ? Boolean(editProjectId) : Boolean(editTaskId)} />,
     ];
 
     return (
-        <div>
+        <div className={`padding-box ${isSidePanelOpen ? 'pdlb' : ''}`}>
             <div className="row">
                 <div className="card col-lg-6">
                     <div className="login-title-box">

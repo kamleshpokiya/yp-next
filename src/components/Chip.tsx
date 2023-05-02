@@ -1,7 +1,12 @@
-import { getColorStyles } from '@/utils/colors';
+// packages
 import { sample } from 'lodash';
+// utils
+import { getColorStyles } from '@/utils/colors';
+// _mock
 import StatusType from '@/_mock/status';
 
+
+// types
 type ChipProps = {
     categories: string[],
 };

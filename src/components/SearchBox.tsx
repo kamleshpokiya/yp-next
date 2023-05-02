@@ -1,6 +1,9 @@
-import Select, { components } from 'react-select';
-import IMAGES from '@/assets/img';
+// packages
 import Image from 'next/image';
+import Select, { components } from 'react-select';
+// images
+import IMAGES from '@/assets/img';
+
 
 const dot = (color = 'transparent') => ({
     alignItems: 'center',
@@ -83,7 +86,7 @@ const SearchBox = <T extends React.ElementType = 'select'>({
             <div style={{ width: '100%' }}>
                 <Select
                     options={options}
-                    placeholder={placeholder ?? "Search Here Project..."}
+                    placeholder={placeholder ?? 'Search Here Project...'}
                     className='selectInput'
                     isSearchable
                     components={showIcon ? { DropdownIndicator } : {}}

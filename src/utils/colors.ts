@@ -1,4 +1,6 @@
+// _mock
 import { statusColor } from '@/_mock/status';
+
 
 export const getColor = (status: string) => {
   return statusColor[status];

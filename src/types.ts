@@ -1,3 +1,5 @@
+// shared types
+
 export type Member = {
     id: string,
     name: string,
@@ -37,4 +39,16 @@ export type Project = {
     deadline: string,
     memberIds?: string[],
     teamIds?: string[]
+};
+
+export type Account = {
+    firstName: string,
+    lastName: string,
+    mobileNumber: string,
+    email: string,
+    address: string,
+    token?: string | null,
+    password?: string | null,
+    isLoggedIn?: boolean,
+    avatar?: string | null,
 };

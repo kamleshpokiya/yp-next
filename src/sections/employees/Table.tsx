@@ -1,14 +1,18 @@
-import SearchBox from '@/components/SearchBox';
-import { RootState } from '@/store/reducers';
+// packages
 import DataTable, { TableColumn, ConditionalStyles } from 'react-data-table-component';
 import { useSelector, useDispatch } from 'react-redux';
-import { Member } from '@/types';
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
-import Iconify from '@/components/Iconify';
 import { Tooltip } from 'react-tooltip';
-import { onRemoveMember } from '@/store/reducers/membersSlice';
-import { handleEditMemberId, onEmployeeTabChanage } from '@/store/reducers/actionsSlice';
+// components
+import SearchBox from '@/components/SearchBox';
+import Iconify from '@/components/Iconify';
+// store
+import { RootState } from '@/store/rootReducer';
+import { onRemoveMember } from '@/store/slices/members';
+import { handleEditMemberId, onEmployeeTabChanage } from '@/store/slices/actions';
+// types
+import { Member } from '@/types';
 
 
 const customStyles = {
@@ -41,13 +45,12 @@ const customStyles = {
   },
 };
 
-const conditionalRowStyles: ConditionalStyles<Member>[] = [
-
-];
+const conditionalRowStyles: ConditionalStyles<Member>[] = [];
 
 const Table = () => {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
   const members = useSelector((state: RootState) => state.members);
+  const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
 
   const columns: TableColumn<Member>[] = useMemo(
     () => [
@@ -85,7 +88,7 @@ const Table = () => {
 
   return (
     <div className="tab-pane fade show active">
-      <div className="padding-box pdlb">
+      <div className={`padding-box ${isSidePanelOpen ? 'pdlb' : ''}`}>
         <div className="data-table-main-box">
           <SearchBox
             options={members}

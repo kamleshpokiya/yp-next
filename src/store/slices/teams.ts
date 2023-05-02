@@ -1,7 +1,11 @@
+// packages
 import { createSlice } from '@reduxjs/toolkit';
-import teams from '@/_mock/teams';
-import { Team } from '@/types';
 import { faker } from '@faker-js/faker';
+// _mock
+import teams from '@/_mock/teams';
+// types
+import { Team } from '@/types';
+
 
 const initialState: Team[] = teams;
 

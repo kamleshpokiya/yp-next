@@ -1,10 +1,12 @@
-import { useRouter } from "next/router";
+// packages
+import { useRouter } from 'next/router';
+
 
 const useTitle = () => {
-const router = useRouter();
+    const router = useRouter();
     const { asPath } = router;
-
     let title: string;
+
     switch (asPath) {
         case '/employees':
             title = 'Employees';
@@ -12,6 +14,13 @@ const router = useRouter();
 
         case '/teams':
             title = 'Teams';
+            break;
+        case '/my-account':
+            title = 'My Account';
+            break;
+
+        case '/change-password':
+            title = 'Change Password';
             break;
 
         default:

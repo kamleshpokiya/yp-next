@@ -1,4 +1,6 @@
+// packages
 import { createSlice } from '@reduxjs/toolkit';
+
 
 type InitialState = {
     isSidePanelOpen: boolean,
@@ -8,6 +10,8 @@ type InitialState = {
     currentEmployeeTab: string,
     editMemberId: null | string,
     currentTaskTab: string,
+    editTaskId: null | string,
+    taskDetailsId: null | string,
 };
 
 const initialState: InitialState = {
@@ -17,7 +21,9 @@ const initialState: InitialState = {
     editProjectId: null,
     currentEmployeeTab: 'employees',
     editMemberId: null,
-    currentTaskTab: 'tasks'
+    currentTaskTab: 'tasks',
+    editTaskId: null,
+    taskDetailsId: null,
 };
 
 export const actionsSlice = createSlice({
@@ -43,6 +49,8 @@ export const actionsSlice = createSlice({
             state.currentEmployeeTab = action.payload;
         },
         onTaskTabChange: (state, action) => { 
+            state.taskDetailsId = null;
+            state.editTaskId = null;
             state.currentTaskTab = action.payload;
         },
 
@@ -60,7 +68,15 @@ export const actionsSlice = createSlice({
         },
         handleEditProjectId: (state, action) => {
             state.editProjectId = action.payload ?? null;
-        }
+        },
+
+        // Task Actions
+        handleEditTaskId: (state, action) => {
+            state.editTaskId = action.payload ?? null;
+        },
+        handleTaskDetailsId: (state, action) => {
+            state.taskDetailsId = action.payload;
+        },
     }
 });
 
@@ -74,5 +90,7 @@ export const {
     onEmployeeTabChanage,
     handleEditMemberId,
     onTaskTabChange,
+    handleEditTaskId,
+    handleTaskDetailsId,
 } = actionsSlice.actions;
 export default actionsSlice.reducer;

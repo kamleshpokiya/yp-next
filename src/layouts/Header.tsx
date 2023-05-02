@@ -1,7 +1,15 @@
+// components
 import Iconify from '@/components/Iconify';
+// hooks
 import useTitle from '@/hooks/useTitle';
 
-const Header = () => {
+
+// types
+type HeaderProps = {
+    onNavBarOpen: () => void,
+};
+
+const Header = ({ onNavBarOpen }: HeaderProps) => {
     const title = useTitle();
 
     return (
@@ -13,7 +21,7 @@ const Header = () => {
                     </a>
                 </div>
 
-                <div className="menu-btn">
+                <div className="menu-btn" onClick={onNavBarOpen}>
                     <Iconify icon='solar:hamburger-menu-outline' sx={{ color: 'rgb(183 183 183)' }} />
                 </div>
             </nav>

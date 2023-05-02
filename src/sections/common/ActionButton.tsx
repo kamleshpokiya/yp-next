@@ -1,3 +1,4 @@
+// types
 type ActionButtonProps = {
     label: string,
     className: string,

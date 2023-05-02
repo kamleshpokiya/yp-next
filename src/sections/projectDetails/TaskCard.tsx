@@ -1,20 +1,36 @@
-import Chip from "@/components/Chip";
-import { Task } from "@/types";
-import { formatDate } from "@/utils/formatDate";
-import Image from "next/image";
-import { useMemo } from "react";
-import { Tooltip } from "react-tooltip";
-import IMAGES from "@/assets/img";
+// packages
+import Image from 'next/image';
+import { useMemo } from 'react';
+import { Tooltip } from 'react-tooltip';
+import { useDispatch } from 'react-redux';
+// components
+import Chip from '@/components/Chip';
+// types
+import { Task } from '@/types';
+// utils
+import { formatDate } from '@/utils/formatDate';
+// images
+import IMAGES from '@/assets/img';
+// store
+import { handleEditTaskId, handleTaskDetailsId, onTaskTabChange } from '@/store/slices/actions';
+// sections
+import MenuPopover from '@/sections/projects/MenuPopover';
+
 
 const TaskCard = ({
+    id,
     title,
     description,
-    createdDate,
     dueDate,
     categories,
 }: Task) => {
-
+    const dispatch = useDispatch();
     const { documentInfoIcon, documentEditIcon } = IMAGES;
+
+    const handleEditTask = () => {
+        dispatch(onTaskTabChange('addTask'));
+        dispatch(handleEditTaskId(id));
+    };
 
     return (
         <div className="task-contain">
@@ -25,27 +41,27 @@ const TaskCard = ({
             <div className="add-edit">
                 <div
                     className="xxx"
-                    data-tooltip-id='project-card-tooltip'
+                    data-tooltip-id={id}
                     data-tooltip-place='bottom'
-                    data-tooltip-content='Project Details'
+                    data-tooltip-content='Task Details'
+                    onClick={() => dispatch(handleTaskDetailsId(id))}
                 >
                     <Image src={documentInfoIcon.src} alt={documentInfoIcon.alt} width={30} />
                 </div>
                 <div
                     className="edit"
-                    data-tooltip-id='project-card-tooltip'
+                    data-tooltip-id={id}
                     data-tooltip-place='bottom'
-                    data-tooltip-content='Edit Project'
+                    data-tooltip-content='Edit Task'
+                    onClick={() => handleEditTask()}
                 >
                     <Image src={documentEditIcon.src} alt={documentEditIcon.alt} width={30} />
                 </div>
 
-                <Tooltip id='project-card-tooltip' />
+                <Tooltip id={id} style={{ zIndex: 1 }} />
             </div>
 
-            <div className="project-doct">
-                <span />
-            </div>
+            <MenuPopover id={id} />
         </div>
     )
 };

@@ -1,15 +1,24 @@
-import IMAGES from '@/assets/img';
+// packages
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { useMemo } from 'react';
+import { Tooltip } from 'react-tooltip';
+// images
+import IMAGES from '@/assets/img';
+// types
 import { Project } from '@/types';
+// utils
 import { formatDate } from '@/utils/formatDate';
 import { getColor } from '@/utils/colors';
-import { useDispatch } from 'react-redux';
-import { addProjectDetailsId, onProjectTabChange, handleEditProjectId } from '@/store/reducers/actionsSlice';
-import { useMemo } from 'react';
+// store
+import { addProjectDetailsId, onProjectTabChange, handleEditProjectId } from '@/store/slices/actions';
+// sections
 import MenuPopover from './MenuPopover';
+// components
 import Chip from '@/components/Chip';
-import { Tooltip } from 'react-tooltip';
 
+
+// types
 type ProjectCardProps = {
     project: Project
 };

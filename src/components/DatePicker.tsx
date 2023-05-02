@@ -1,6 +1,9 @@
+// packages
 import RDatePicker from 'react-datepicker';
 import { useField } from 'formik';
 
+
+// types
 type DatePickerProps = {
     name: string,
     label: string,

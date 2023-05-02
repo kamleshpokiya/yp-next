@@ -164,6 +164,10 @@ input[type="search"]::-webkit-search-results-decoration {
     padding: 20px 25px;
     height: 100vh;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
 }
 
 .aside-logo {
@@ -343,6 +347,7 @@ nav.navigation {
     justify-content: center;
     font-size: 14px;
     color: #fff;
+    z-index: 999;
 }
 
 .msg-listing ul {
@@ -784,7 +789,7 @@ a#v-pills-home-tab {
     color: black;
     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    border-radius: 23px;
+    /* border-radius: 23px; */
 }
 
 .hexagon-shape:hover {
@@ -837,4 +842,79 @@ aside {
     align-items: center;
     gap: 25px;
 
+}
+
+
+.main-search-box button {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Updated Code */
+.msg-listing ul li.profile:first-child {
+    background: none;
+    padding: 0;
+}
+
+.msg-listing>ul>li>a {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-ditels.droupdown-main-box ul {
+    width: max-content;
+}
+
+.profile-ditels ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.droupdown-main-box ul li a {
+    font-size: 15px;
+    color: #212529;
+}
+
+.profile-ditels {
+    position: absolute;
+    top: 30px !important;
+    right: 100px !important;
+    background: #fff !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: all .5s !important;
+    width: unset !important;
+}
+
+.profile-ditels::before {
+    content: "";
+    position: absolute;
+    top: 10px !important;
+    right: -30px !important;
+    margin-top: -10px !important;
+    border-width: 15px !important;
+    border-style: solid !important;
+    border-color: transparent #fff transparent transparent !important;
+    rotate: 180deg !important;
+}
+
+.profile-ditels.droupdown-main-box.opened {
+    visibility: visible !important;
+    opacity: 1 !important;
+    top: 25px !important;
+}
+
+.signout-button {
+    font-size: 15px;
+    color: #212529;
+    border: none;
+    font-family: 'Gilroy-Sami-bold';
+    text-decoration: none;
+    background: none;
+}
+
+.hexagon-shape span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

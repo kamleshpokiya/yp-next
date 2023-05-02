@@ -167,14 +167,14 @@
     float: right;
 }
 
-/* #employeesPage .pdlb {
+#employeesPage .pdlb {
     padding-left: 12.666667%;
-} */
+}
 
-/* #employeesPage .col-lg-2.toggle {
+#employeesPage .col-lg-2.toggle {
     position: absolute;
     z-index: 9999;
-} */
+}
 
 #employeesPage .table td,
 .table th {

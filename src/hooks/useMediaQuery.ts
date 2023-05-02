@@ -1,4 +1,6 @@
+// packages
 import { useState, useEffect } from 'react';
+
 
 const useMediaQuery = (query: string) => {
     const [matches, setMatches] = useState(false);
@@ -12,10 +14,10 @@ const useMediaQuery = (query: string) => {
 
         listener();
 
-        media.addEventListener("change", listener);
+        media.addEventListener('change', listener);
 
         return () => {
-            media.removeEventListener("change", listener);
+            media.removeEventListener('change', listener);
         };
     }, [query]);
 

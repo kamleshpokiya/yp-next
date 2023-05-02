@@ -1,7 +1,12 @@
+// packages
 import { faker } from '@faker-js/faker';
+// types
 import { Project } from '@/types';
+// utils
 import { getMembersIds } from '@/utils/common';
+// _mock
 import members from './members';
+
 
 const projects: Project[] = [
     {

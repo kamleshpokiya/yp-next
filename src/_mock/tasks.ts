@@ -1,64 +1,29 @@
+// packages
 import { faker } from '@faker-js/faker';
+import { random, sample, sampleSize } from 'lodash';
+// types
 import { Task } from '@/types';
+// _mock
 import projects from './projects';
 import members from './members';
 import teams from './teams';
+import categories from './categories';
+// utils
 import { getMembersIds, getTeamsIds } from '@/utils/common';
 
 
-const tasks: Task[] = [
-    {
-        id: faker.datatype.uuid(),
-        projectId: projects[0].id,
-        title: 'Make an data grid table with dynamic fields',
-        description: faker.lorem.paragraph(),
-        createdDate: faker.date.recent(),
-        dueDate: faker.date.future(),
-        categories: ['Content creation and management', 'Data analysis and visualization'],
-        memberIds: getMembersIds(members),
-        teamIds: getTeamsIds(teams),
-        status: 'In Progress',
-        archived: false,
-    },
-    {
-        id: faker.datatype.uuid(),
-        projectId: projects[0].id,
-        title: 'Make APIs for users in backend',
-        description: faker.lorem.paragraph(),
-        createdDate: faker.date.recent(),
-        dueDate: faker.date.future(),
-        categories: ['Financial Technology', 'Game development'],
-        memberIds: getMembersIds(members),
-        teamIds: getTeamsIds(teams),
-        status: 'Todo',
-        archived: false,
-    },
-    {
-        id: faker.datatype.uuid(),
-        projectId: projects[0].id,
-        title: 'Structure the project',
-        description: faker.lorem.paragraph(),
-        createdDate: faker.date.recent(),
-        dueDate: faker.date.future(),
-        categories: ['Financial Technology', 'Trading Solutions', 'Content creation and management'],
-        memberIds: getMembersIds(members),
-        teamIds: getTeamsIds(teams),
-        status: 'Completed',
-        archived: false,
-    },
-    {
-        id: faker.datatype.uuid(),
-        projectId: projects[0].id,
-        title: 'Make project design and wireframes',
-        description: faker.lorem.paragraph(),
-        createdDate: faker.date.recent(),
-        dueDate: faker.date.future(),
-        categories: ['Mobile app development', 'Software development', 'Web development'],
-        memberIds: getMembersIds(members),
-        teamIds: getTeamsIds(teams),
-        status: 'Completed',
-        archived: true,
-    },
-];
+const tasks: Task[] = new Array(200).fill(0).map(() => ({
+    id: faker.datatype.uuid(),
+    projectId: sample(projects)?.id ?? projects[0].id,
+    title: faker.lorem.words(2),
+    description: faker.lorem.words(12),
+    createdDate: faker.date.recent(),
+    dueDate: faker.date.future(),
+    categories: sampleSize(categories, random(1,2)),
+    memberIds: getMembersIds(members),
+    teamIds: getTeamsIds(teams),
+    status: sample(['Todo', 'In Progress', 'Completed']) ?? 'Todo',
+    archived: faker.datatype.boolean(),
+}));
 
 export default tasks;

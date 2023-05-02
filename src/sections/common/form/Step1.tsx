@@ -1,22 +1,32 @@
+// packages
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+// components
 import InputField from '@/components/InputField';
 import TextArea from '@/components/TextArea';
 import DatePicker from '@/components/DatePicker';
-import { Formik, Form, Field } from 'formik';
-import { Project } from '@/types';
-import * as Yup from 'yup';
+// types
+import { Project, Task } from '@/types';
 
+
+// types
 type Step1Props = {
-    onNext: (values: Project, isLastStep?: boolean) => void,
-    data: Project,
+    onNext: (values: Project | Task, isLastStep?: boolean) => void,
+    data: Project | Task,
+    title: string,
 };
 
-const validationSchema = Yup.object({
-    title: Yup.string().required('Please enter your project name'),
-    description: Yup.string().required('Please enter your project description'),
-    dueDate: Yup.date().min(new Date(), 'Project due date must be a future date').required('Please provide due date for your project').typeError('Project due date must be an valid date'),
-});
 
-const Step1 = ({ onNext, data }: Step1Props) => {
+const Step1 = ({ onNext, data, title }: Step1Props) => {
+    const validationSchema = Yup.object({
+        title: Yup.string().required(`Please enter your ${title.toLowerCase()} name`),
+        description: Yup.string().required(`Please enter your ${title.toLowerCase()} description`),
+        dueDate: Yup.date()
+            .min(new Date(), `${title} due date must be a future date`)
+            .required(`Please provide due date for your ${title.toLowerCase()}`)
+            .typeError(`${title} due date must be an valid date`),
+    });
+
     return (
         <div className="main active">
             <div className=" login-account">
@@ -33,7 +43,7 @@ const Step1 = ({ onNext, data }: Step1Props) => {
                                 }) => (
                                     <Form>
                                         <InputField
-                                            label="Project Title:"
+                                            label={`${title} Title:`}
                                             name="title"
                                             id="title"
                                             type="text"
@@ -41,7 +51,7 @@ const Step1 = ({ onNext, data }: Step1Props) => {
                                             placeholder="Enter your Project title her..."
                                         />
                                         <TextArea
-                                            label="Project Description:"
+                                            label={`${title} Description:`}
                                             name="description"
                                             id="comment"
                                             value={values.description}
