@@ -2,6 +2,8 @@
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+// analytics
+import { Analytics } from '@vercel/analytics/react';
 // layouts
 import Layout from '@/layouts';
 // store
@@ -35,6 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
           <Component {...pageProps} />
+          <Analytics />
         </Layout>
       </PersistGate>
     </Provider>
