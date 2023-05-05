@@ -1,13 +1,17 @@
 // packages
 import { Fragment, useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 // auth
 import SignIn from './SignIn';
 import SingUp from './SingnUp';
+// images
+import IMAGES from '@/assets/images';
 
 
 const Auth = () => {
     const [pageType, setPageType] = useState<'signin' | 'signup'>('signin');
+    const { logo } = IMAGES;
 
     const onSignIn = () => {
         setPageType('signin');
@@ -23,7 +27,11 @@ const Auth = () => {
                 <title>{pageType === 'signin' ? 'Sign In' : 'Sign Up'}</title>
             </Head>
 
-            <div className="page" id='myAccount'>
+            <div className="page authentication-page" id='myAccount'>
+                <div className="brand-logo">
+                    <Image src={logo.src} alt={logo.alt} width={50} height={50} />
+                </div>
+
                 <div className="wraper">
                     <div className="row" style={{
                         height: '100vh',

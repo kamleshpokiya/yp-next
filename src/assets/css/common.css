@@ -960,3 +960,33 @@ aside {
 .form-step-3 form input.search {
     margin-left: 0px !important;
 }
+
+/* authentication page css */
+.authentication-page .brand-logo {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.authentication-page .brand-logo img {
+    height: auto;
+}
+
+.authentication-page form {
+    margin-inline: 20px;
+}
+
+@media(max-width: 991px) {
+    .authentication-page .account-box {
+        margin-top: 30px;
+        margin-bottom: 0px;
+    }
+}
+
+@media(max-width: 500px) {
+    .authentication-page .brand-logo {
+        left: 20px;
+    }
+}
+
+/* authentication page css */
