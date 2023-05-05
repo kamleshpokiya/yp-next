@@ -1,7 +1,7 @@
 // packages
 import Head from 'next/head';
 import { useRouter } from 'next/router'
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // sections
 import ActionPanel from '@/sections/projectDetails/ActionPanel';
@@ -10,36 +10,36 @@ import Archived from '@/sections/projectDetails/archived';
 import Form from '@/sections/common/form';
 import Drawer from '@/sections/projectDetails/Drawer';
 // store
-import { RootState } from '@/store/rootReducer';
 import { addTask, updateTask } from '@/store/slices/tasks';
 import { onTaskTabChange } from '@/store/slices/actions';
+import { getCurrentTaskTab, getTaskDetailsId } from '@/store/selectors/actions';
 // types
 import { Project, Task } from '@/types';
+import { RootState } from '@/store/rootReducer';
 
 
 const ProjectDetails = () => {
     const router = useRouter();
-    const { projectId } = router.query;
     const dispatch = useDispatch();
-    const currentTaskTab = useSelector((state: RootState) => state.actions.currentTaskTab);
-    const taskDetailsId = useSelector((state: RootState) => state.actions.taskDetailsId);
+    const { projectId } = router.query;
+    const currentTaskTab = useSelector(getCurrentTaskTab);
+    const taskDetailsId = useSelector(getTaskDetailsId);
+    const allArchivedTasks = useSelector((state: RootState) => state.tasks.filter(task => task.status === 'Archived'));
 
-    const onSubmit = (values: Project | Task, isEditMode: boolean = false) => {
-        console.log('values: ', values);
-        const newTask = {
+    useEffect(() => {
+        console.log('all archived tasks: ', allArchivedTasks);
+    })
+
+    const onSubmit = (values: Project | Task, isEditMode = false) => {
+        const action = isEditMode ? updateTask : addTask;
+        const updatedValues = {
             ...values,
             projectId,
             archived: false,
             status: 'Todo',
             dueDate: new Date(values.dueDate).toISOString(),
         };
-
-        if (isEditMode) {
-            dispatch(updateTask(newTask));
-        } else {
-            dispatch(addTask(newTask));
-        }
-
+        dispatch(action(updatedValues));
         dispatch(onTaskTabChange('tasks'));
     }
 

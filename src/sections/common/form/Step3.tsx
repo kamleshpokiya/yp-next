@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 // components
-import SearchBox from '@/components/SearchBox';
+import SelectField from '@/components/SelectField';
 // types
 import { Project, Task } from '@/types';
 // _mock
@@ -76,8 +76,8 @@ const Step3 = ({ data, onNext, onPrev, isEditMode }: Step3Props) => {
                         <Form>
                             <div className="login-form technology-box">
                                 <div className="catagory-main-box">
-                                    <label htmlFor="inputDate">Choose category</label>
-                                    <SearchBox
+                                    <label htmlFor="inputDate">Choose Category</label>
+                                    <SelectField
                                         options={formatedCategories}
                                         value={selectedCategories}
                                         onChange={(selected: any) => setSelectedCategories(selected)}
@@ -86,13 +86,6 @@ const Step3 = ({ data, onNext, onPrev, isEditMode }: Step3Props) => {
                                         maxWidth='100%'
                                         isMulti
                                     />
-                                    <div className="choose-category">
-                                        {categories.slice(9).map((category, key) => (
-                                            <div className="btn-box1" key={key}>
-                                                <span className="label">{category}</span>
-                                            </div>
-                                        ))}
-                                    </div>
                                     <AddCategory
                                         selectedCategories={selectedCategories}
                                         setSelectedCategories={setSelectedCategories}

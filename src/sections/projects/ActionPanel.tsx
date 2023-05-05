@@ -5,7 +5,7 @@ import ActionButton from '@/sections/common/ActionButton';
 import PanelWrap from '@/sections/common/PanelWrap';
 // store
 import { onProjectTabChange } from '@/store/slices/actions';
-import { RootState } from '@/store/rootReducer';
+import { getCurrentProjectTab } from '@/store/selectors/actions';
 
 
 // types
@@ -35,7 +35,7 @@ const projectTabs: ProjectTabs[] = [
 
 const ActionPanel = () => {
     const dispatch = useDispatch();
-    const currentTab = useSelector((state: RootState) => state.actions.currentProjectTab);
+    const currentTab = useSelector(getCurrentProjectTab);
 
     const handleTabChange = (tab: string) => {
         dispatch(onProjectTabChange(tab));

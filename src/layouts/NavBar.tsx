@@ -5,10 +5,10 @@ import { useRouter } from 'next/router';
 import { Tooltip } from 'react-tooltip';
 import { useSelector, useDispatch } from 'react-redux';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // store
 import { onSidePanelOpen } from '@/store/slices/actions';
-import { RootState } from '@/store/rootReducer';
+import { getIsSidePanelOpen } from '@/store/selectors/actions';
 // components
 import Iconify from '@/components/Iconify';
 // layouts
@@ -29,11 +29,6 @@ type NavLinks<T> = {
 
 const {
     logo,
-    fileIcon,
-    usersIcon,
-    gentalmanIcon,
-    shivLingIcon,
-    payoutIcon,
     leftArrowIcon
 } = IMAGES;
 
@@ -46,7 +41,7 @@ const navLinks: NavLinks<Icon> = [
         label: 'Home',
     },
     {
-        href: '/projects',
+        href: '#',
         icon: 'teenyicons:text-document-outline',
         label: 'Projects',
     },
@@ -61,12 +56,12 @@ const navLinks: NavLinks<Icon> = [
         label: 'Teams',
     },
     {
-        href: '/summery',
+        href: '#',
         icon: 'mdi:grave-stone',
         label: 'Summery',
     },
     {
-        href: '/payout',
+        href: '#',
         icon: 'pixelarticons:reciept',
         label: 'Payout',
     },
@@ -76,7 +71,7 @@ const navLinks: NavLinks<Icon> = [
 const NavBar = ({ isNavBarOpen }: NavBarProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
-    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
+    const isSidePanelOpen = useSelector(getIsSidePanelOpen);
 
     return (
         <aside>

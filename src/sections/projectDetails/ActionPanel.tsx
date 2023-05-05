@@ -5,7 +5,7 @@ import ActionButton from '@/sections/common/ActionButton';
 import PanelWrap from '@/sections/common/PanelWrap';
 // store
 import { onTaskTabChange } from '@/store/slices/actions';
-import { RootState } from '@/store/rootReducer';
+import { getCurrentTaskTab } from '@/store/selectors/actions';
 
 
 // types
@@ -30,7 +30,7 @@ const taskTabs: TaskTab[] = [
 
 const ActionPanel = () => {
     const dispatch = useDispatch();
-    const currentTab = useSelector((state: RootState) => state.actions.currentTaskTab);
+    const currentTab = useSelector(getCurrentTaskTab);
 
     const handleTabChange = (tab: string) => {
         dispatch(onTaskTabChange(tab));

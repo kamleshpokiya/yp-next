@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 // components
 import Assigners from '@/components/Assigners';
 // store
-import { RootState } from '@/store/rootReducer';
+import { getAllTeams } from '@/store/selectors/teams';
 
 
 // types
@@ -12,7 +12,7 @@ type TeamPreviewProps = {
 };
 
 const TeamPreview = ({ onItemClick }: TeamPreviewProps) => {
-    const teams = useSelector((state: RootState) => state.teams);
+    const teams = useSelector(getAllTeams);
 
     const formateTeam = (team: any) => ({
         id: team?.id,
@@ -26,7 +26,7 @@ const TeamPreview = ({ onItemClick }: TeamPreviewProps) => {
     return (
         <div className="your-teams">
             <div className="login-title-box">
-                <h3>Your teams</h3>
+                <h3>Your Teams</h3>
             </div>
             {formatedTeams.length ? (
                 <Assigners

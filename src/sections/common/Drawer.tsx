@@ -5,11 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import useToggle from '@/hooks/useToggle';
 // store
 import { RootState } from '@/store/rootReducer';
-import { removeProjectDetailsId } from '@/store/slices/actions';
+import { handleEditProjectId, onProjectTabChange, removeProjectDetailsId } from '@/store/slices/actions';
 import { getMembers } from '@/store/selectors/members';
 import { getTeams } from '@/store/selectors/teams';
+import { getProjectDetailsId } from '@/store/selectors/actions';
+import { getProjectById } from '@/store/selectors/projects';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // utils
 import { formatDate } from '@/utils/formatDate';
 // components
@@ -22,8 +24,8 @@ const Drawer = () => {
     const { isOpen: isShowMore, onToggle: onShowMore } = useToggle();
     const { leftArrowIcon } = IMAGES;
     const dispatch = useDispatch();
-    const projectDetailsId = useSelector((state: RootState) => state.actions.projectDetailsId);
-    const projectDetails = useSelector((state: RootState) => state.projects.find(project => project.id === projectDetailsId));
+    const projectDetailsId = useSelector(getProjectDetailsId);
+    const projectDetails = useSelector((state: RootState) => getProjectById(state, projectDetailsId));
     const members = useSelector((state: RootState) => getMembers(state, projectDetails?.memberIds));
     const teams = useSelector((state: RootState) => getTeams(state, projectDetails?.teamIds));
 
@@ -43,6 +45,11 @@ const Drawer = () => {
 
     const assigners = assignedMembers.concat(assignedTeams);
 
+    const handleEditProject = () => {
+        dispatch(onProjectTabChange('addProject'));
+        dispatch(handleEditProjectId(projectDetailsId));
+    }
+
     if (!projectDetails) return null;
 
     return (
@@ -51,6 +58,14 @@ const Drawer = () => {
                 <div className="project-des-box">
                     <div className="title-boxs">
                         <h3>Project Description</h3>
+                        <div className="top" onClick={(e) => {
+                            e.stopPropagation();
+                            handleEditProject();
+                        }}>
+                            <span>
+                                <i className="fa-solid fa-pen-to-square" /> Edit project
+                            </span>
+                        </div>
                     </div>
 
                     <div className="project-des">
@@ -89,11 +104,23 @@ const Drawer = () => {
                         <h4>Attachments:</h4>
                         <a className="pdf">
                             <i className="fa-solid fa-file-pdf" />
-                            <p>pdf-file</p>
+                            <p>Guidance.pdf</p>
+                        </a>
+                        <a className="pdf">
+                            <i className="fa-solid fa-file-excel" />
+                            <p>Chartdata.xlsx</p>
                         </a>
                         <a className="pdf">
                             <i className="fa-solid fa-file-image" />
-                            <p>pdf-file</p>
+                            <p>Screenshot-1.png</p>
+                        </a>
+                        <a className="pdf">
+                            <i className="fa-solid fa-file-image" />
+                            <p>Screenshot-2.png</p>
+                        </a>
+                        <a className="pdf">
+                            <i className="fa-solid fa-file-image" />
+                            <p>References.jpg</p>
                         </a>
                     </div>
 

@@ -1,18 +1,16 @@
 // packages
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik, Form, FormikHelpers } from 'formik';
 // components
 import InputField from '@/components/InputField';
-import SearchBox from '@/components/SearchBox';
 import Assigners from '@/components/Assigners';
+import SearchField from '@/components/SearchField';
 // store
-import { RootState } from '@/store/rootReducer';
 import { onAddTeam } from '@/store/slices/teams';
-// types
-import { Member } from '@/types';
+import { getAllMembers } from '@/store/selectors/members';
 
 
 // types
@@ -21,7 +19,7 @@ type AddTeamProps = {
 };
 
 const validationSchema = Yup.object({
-    name: Yup.string().required('Please enter your team name'),
+    name: Yup.string().required('Please enter your team name.'),
 });
 
 type InitialValue = {
@@ -33,15 +31,18 @@ const initialValues: InitialValue = {
 };
 
 const AddTeam = ({ onClose }: AddTeamProps) => {
-    const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+    const [searchQuery, setSearchQuery] = useState<string>('');
     const [checkedMembers, setCheckedMembers] = useState<string[]>([]);
-    const [error, setError] = useState<string | null>(null);
-    const members = useSelector((state: RootState) => state.members);
     const dispatch = useDispatch();
+    const members = useSelector(getAllMembers);
+    const [error, setError] = useState<string | null>(null);
+    const isSearchQuery = searchQuery.trim() !== '';
 
-    const onSelectMember = (selected: Member | null) => {
-        setSelectedMember(selected);
-    };
+    const getMembersBySearchedQuery = () => {
+        return members.filter((member) => member.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    }
+
+    const filteredMembers = isSearchQuery ? getMembersBySearchedQuery() : members;
 
     const formateMember = (member: any) => ({
         id: member?.id,
@@ -50,12 +51,11 @@ const AddTeam = ({ onClose }: AddTeamProps) => {
         description: member?.designation,
     });
 
-    const formatedMembers = members.map(formateMember);
-    const formatedMember = formateMember(selectedMember);
+    const formatedMembers = filteredMembers.map(formateMember);
 
     const onSubmit = (values: InitialValue, { resetForm }: FormikHelpers<InitialValue>) => {
         if (!checkedMembers.length) {
-            setError('Please select atleast one member');
+            setError('Please select atleast one member.');
         } else {
             setError(null);
             const newValues = {
@@ -66,6 +66,7 @@ const AddTeam = ({ onClose }: AddTeamProps) => {
             dispatch(onAddTeam(newValues));
             onClose();
             resetForm();
+            setCheckedMembers([]);
         }
     }
 
@@ -85,20 +86,16 @@ const AddTeam = ({ onClose }: AddTeamProps) => {
                                 id="name"
                                 type="text"
                                 value={values.name}
-                                placeholder="Enter your team name her..."
+                                placeholder="Enter your team name here..."
                             />
                             <div className="input-box input comment">
                                 <div className="secend-box">
                                     <label id="name-label">
-                                        Add employee:
-
-                                        <SearchBox
-                                            options={members}
-                                            value={selectedMember}
-                                            onChange={onSelectMember}
-                                            placeholder="Search Here User..."
-                                            getOptionLabel={(option: Member) => option.name}
-                                            maxWidth="100%"
+                                        Add Employees:
+                                        <SearchField
+                                            value={searchQuery}
+                                            onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+                                            placeholder='Search employees here...'
                                         />
 
                                         {error ? (
@@ -106,7 +103,7 @@ const AddTeam = ({ onClose }: AddTeamProps) => {
                                         ) : null}
                                     </label>
                                     <Assigners
-                                        assigners={selectedMember ? [formatedMember] : formatedMembers}
+                                        assigners={formatedMembers}
                                         isSelectable
                                         checkedList={checkedMembers}
                                         setCheckedList={setCheckedMembers}
@@ -114,7 +111,7 @@ const AddTeam = ({ onClose }: AddTeamProps) => {
                                 </div>
 
                                 <div className="buttons">
-                                    <button className="star-btn next_button" type='submit'>Add to team</button>
+                                    <button className="star-btn next_button" type='submit'>Add Team</button>
                                 </div>
                             </div>
                         </div>

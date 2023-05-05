@@ -466,9 +466,11 @@
 #projectDetailsPage .pdf-main-bpx {
     display: flex;
     align-items: baseline;
+    flex-wrap: wrap;
 }
 
 #projectDetailsPage .task-box {
+    width: 350px;
     min-width: 350px;
 }
 
@@ -598,9 +600,9 @@
     position: relative;
 }
 
-#projectDetailsPage .main-search-box {
-    margin: 20px 0 25px 15px;
-}
+/* #projectDetailsPage .main-search-box {
+    margin: 20px 0;
+} */
 
 /* #projectDetailsPage .horizonta-scroll-bar-wrap .main-search-box button {
     border: 0;
@@ -661,32 +663,36 @@
     justify-content: space-between;
 }
 
-#projectDetailsPage .open-list span svg {
+/* view project button css */
+.open-list span svg {
     transition: all 0.5s;
 
 }
 
-#projectDetailsPage .routed span svg {
+.routed span svg {
     rotate: 180deg !important;
 }
 
-#projectDetailsPage .routed svg {
+.routed svg {
     fill: #ff8d4f;
 }
 
-#projectDetailsPage svg#down-arrow {
+svg#down-arrow {
     width: 20px;
 }
 
-#projectDetailsPage .navigation .list a:hover {
+.list a:hover {
     text-decoration: none !important;
 }
 
-#projectDetailsPage a.open-list {
+a.open-list {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+/* view project button css */
+
 
 #projectDetailsPage .col-lg-2.toggle {
     position: absolute;
@@ -970,7 +976,7 @@
     background: #ff8d4f;
     color: #fff;
     BORDER: 1PX SOLID #ff8d4f;
-    width: 150px;
+    width: 170px;
     box-shadow: 2px 4px 12px rgb(39 105 104 / 20%);
     font-size: 14PX;
     transition: all 0.5s;
@@ -1634,4 +1640,19 @@
 
 #projectDetailsPage .project-des-box .top {
     cursor: pointer;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.catagory-main-box .main-search-box {
+    margin: 20px 0;
+}
+
+#projectDetailsPage .toggle-right:hover .top {
+    opacity: 1;
+}
+
+#projectDetailsPage .search-field-icon {
+    top: 23px !important;
+    right: -10px;
 }

@@ -9,3 +9,7 @@ export const getTeams = (state: RootState, ids: string[] | undefined) => {
     return state.teams.filter((team) => ids?.includes(team.id));
 };
 
+export const getAllTeams = (state: RootState) => {
+    return state.teams;
+}
+

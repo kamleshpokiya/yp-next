@@ -31,12 +31,12 @@ const initialValues: InitialValues = {
 };
 
 const validationSchema = Yup.object({
-    email: Yup.string().email('Please enter valid email address').required('Please enter your email address'),
+    email: Yup.string().email('Please enter a valid email address.').required('Please enter your email address.'),
     newPassword: Yup.string()
-        .required('Please enter new password'),
+        .required('Please enter new password.'),
     confirmPassword: Yup.string()
-        .oneOf([Yup.ref('newPassword')], 'Passwords does not match')
-        .required('Please enter confirm password')
+        .oneOf([Yup.ref('newPassword')], 'Passwords does not match.')
+        .required('Please enter confirm password.')
 });
 
 const SignUp = ({ onSignIn }: SignUpProps) => {

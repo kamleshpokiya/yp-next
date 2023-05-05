@@ -7,15 +7,15 @@ import Iconify from './Iconify';
 
 
 // types
-type Asigner = {
+type Assigner = {
     id: string,
     name: string,
     avatar: string,
     description: string,
 };
 
-type Assigners = {
-    assigners: Asigner[],
+type AssignersProps = {
+    assigners: Assigner[],
     isSelectable?: boolean,
     isRemovable?: boolean,
     checkedList?: string[],
@@ -24,6 +24,7 @@ type Assigners = {
     onRemove?: (id: string) => void,
 };
 
+// Assigners Component
 const Assigners = ({
     assigners,
     isSelectable = false,
@@ -32,16 +33,11 @@ const Assigners = ({
     setCheckedList,
     onItemClick,
     onRemove
-}: Assigners) => {
+}: AssignersProps) => {
     const [checked, setChecked] = useState<string[]>(checkedList);
 
-    const onChange = (isChecked: boolean, id: string) => {
-        if (isChecked) {
-            setChecked(prev => ([...prev, id]));
-        } else {
-            const updatedChecks = checked.filter(item => item !== id);
-            setChecked(updatedChecks);
-        }
+    const onCheck = (isChecked: boolean, id: string) => {
+        setChecked(prev => isChecked ? [...prev, id] : prev.filter(item => item !== id));
     }
 
     useEffect(() => {
@@ -65,7 +61,7 @@ const Assigners = ({
                                 name="scales"
                                 id="YK"
                                 checked={checked.includes(assigner.id)}
-                                onChange={(e) => onChange(e.target.checked, assigner.id)}
+                                onChange={(e) => onCheck(e.target.checked, assigner.id)}
                             />
                         )}
 
@@ -101,7 +97,8 @@ const Assigners = ({
 
 export default Assigners;
 
-export const AssignerCard = ({ avatar, name, description }: Asigner) => {
+// Assigner Card Component
+export const AssignerCard = ({ avatar, name, description }: Assigner) => {
     return (
         <label className="team-checkbox">
             <Image src={avatar} alt="member" width={60} height={60} />

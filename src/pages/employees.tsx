@@ -7,11 +7,11 @@ import ActionPanel from '@/sections/employees/ActionPanel';
 import Form from '@/sections/employees/Form';
 import Table from '@/sections/employees/Table';
 // store
-import { RootState } from '@/store/rootReducer';
+import { getCurrentEmployeeTab } from '@/store/selectors/actions';
 
 
 const Employees = () => {
-    const currentTab = useSelector((state: RootState) => state.actions.currentEmployeeTab);
+    const currentTab = useSelector(getCurrentEmployeeTab);
 
     return (
         <Fragment>

@@ -3,10 +3,10 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // store
 import { onSidePanelClose } from '@/store/slices/actions';
-import { RootState } from '@/store/rootReducer';
+import { getIsSidePanelOpen } from '@/store/selectors/actions';
 
 
 // types
@@ -17,7 +17,7 @@ type PanelWrapProps = {
 const PanelWrap = ({ children }: PanelWrapProps) => {
     const { leftArrowIcon } = IMAGES;
     const dispatch = useDispatch();
-    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
+    const isSidePanelOpen = useSelector(getIsSidePanelOpen);
 
     return (
         <>

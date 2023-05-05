@@ -25,8 +25,7 @@ export type Task = {
     categories: string[],
     memberIds?: string[],
     teamIds?: string[],
-    status: 'Todo' | 'In Progress' | 'Completed',
-    archived: boolean,
+    status: 'Todo' | 'In Progress' | 'Completed' | 'Archived' | 'Deleted',
 };
 
 export type Project = {

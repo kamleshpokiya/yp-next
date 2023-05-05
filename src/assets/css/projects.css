@@ -616,7 +616,8 @@
     color: #454545;
 }
 
-i.fa-solid.fa-file-pdf,
+#projectsPage i.fa-solid.fa-file-pdf,
+#projectsPage i.fa-solid.fa-file-excel,
 #projectsPage i.fa-solid.fa-file-image {
     font-size: 25px;
     color: #454545;

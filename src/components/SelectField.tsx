@@ -2,13 +2,12 @@
 import Image from 'next/image';
 import Select, { components } from 'react-select';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 
 
 const dot = (color = 'transparent') => ({
     alignItems: 'center',
     display: 'flex',
-
     ':before': {
         backgroundColor: color,
         borderRadius: 10,
@@ -26,13 +25,16 @@ const colorStyles = {
         width: '100%',
         border: '1px solid #ddd',
         borderRadius: '10px',
-        cursor: 'text',
+        cursor: 'pointer',
         '&:hover': {
             borderColor: '#ddd',
         },
         '&:focus-within': {
             borderColor: '#ddd',
             boxShadow: '0 0 0 0px #ddd !important',
+        },
+        '& .css-1u9des2-indicatorSeparator': {
+            backgroundColor: 'transparent',
         },
     }),
     placeholder: (styles: any) => ({
@@ -44,11 +46,12 @@ const colorStyles = {
     }),
     input: (styles: any) => ({
         ...styles,
-        padding: '6px'
-    })
+        padding: '6px',
+        cursor: 'text',
+    }),
 };
 
-type SearchBoxProps<T extends React.ElementType> = React.ComponentPropsWithRef<T> & {
+type SelectFieldProps<T extends React.ElementType> = React.ComponentPropsWithRef<T> & {
     options: Array<T>,
     value: T | null,
     placeholder?: string,
@@ -59,7 +62,7 @@ type SearchBoxProps<T extends React.ElementType> = React.ComponentPropsWithRef<T
     showIcon?: boolean,
 };
 
-const SearchBox = <T extends React.ElementType = 'select'>({
+const SelectField = <T extends React.ElementType = 'select'>({
     options,
     value,
     onChange,
@@ -68,7 +71,7 @@ const SearchBox = <T extends React.ElementType = 'select'>({
     maxWidth,
     isMulti = false,
     showIcon = true,
-}: SearchBoxProps<T>) => {
+}: SelectFieldProps<T>) => {
     const { SearchIcon } = IMAGES;
 
     const DropdownIndicator = (props: any) => {
@@ -86,7 +89,7 @@ const SearchBox = <T extends React.ElementType = 'select'>({
             <div style={{ width: '100%' }}>
                 <Select
                     options={options}
-                    placeholder={placeholder ?? 'Search Here Project...'}
+                    placeholder={placeholder ?? 'Search projects here...'}
                     className='selectInput'
                     isSearchable
                     components={showIcon ? { DropdownIndicator } : {}}
@@ -103,4 +106,4 @@ const SearchBox = <T extends React.ElementType = 'select'>({
     );
 };
 
-export default SearchBox;
+export default SelectField;

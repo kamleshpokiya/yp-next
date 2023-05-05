@@ -1,6 +1,7 @@
 // store
 import { RootState } from '../rootReducer';
 
+
 export const getTasksByProjectId = (state: RootState, projectId: string | string[] | undefined) => {
     if (!projectId) return [];
     return state.tasks.filter((task) => task.projectId === projectId);
@@ -13,5 +14,5 @@ export const getTaskById = (state: RootState, id: string | null) => {
 
 export const getArchivedTasksByProjectId = (state: RootState, projectId: string | string[] | undefined) => {
     if (!projectId) return null;
-    return state.tasks.filter((task) => task.projectId === projectId && task.archived);
+    return state.tasks.filter((task) => task.projectId === projectId && task.status === 'Archived');
 }

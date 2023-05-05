@@ -5,14 +5,15 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // components
 import InputField from '@/components/InputField';
-import SearchBox from '@/components/SearchBox';
+import SearchBox from '@/components/SelectField';
 // _mock
 import designations from '@/_mock/designations';
 // store
 import { addMember, updateMember } from '@/store/slices/members';
 import { RootState } from '@/store/rootReducer';
-import { getMember } from '@/store/selectors/members';
+import { getMemberById } from '@/store/selectors/members';
 import { onEmployeeTabChanage } from '@/store/slices/actions';
+import { getEditMemberId, getIsSidePanelOpen } from '@/store/selectors/actions';
 
 
 // types
@@ -35,13 +36,17 @@ const initialValues: InitialValues = {
 };
 
 const validationSchema = Yup.object({
-    name: Yup.string().required('Please enter employee name'),
-    email: Yup.string().email('Please provide an valid email address').required('Please enter employee email address'),
-    designation: Yup.object().required('Please enter employee role'),
+    name: Yup.string().required('Please enter employee name.'),
+    email: Yup.string().email('Please enter a valid email address.').required('Please enter employee email address.'),
+    designation: Yup.object().required('Please select employee role.'),
 });
 
 const Form = () => {
-    const member = useSelector((state: RootState) => getMember(state, state.actions.editMemberId));
+    const dispatch = useDispatch();
+    const editMemberId = useSelector(getEditMemberId);
+    const member = useSelector((state: RootState) => getMemberById(state, editMemberId));
+    const isSidePanelOpen = useSelector(getIsSidePanelOpen);
+
     const formatedMember = () => {
         if (!member) return null;
         return {
@@ -53,10 +58,9 @@ const Form = () => {
             }
         }
     };
-    const [action, setAction] = useState(member ? 'Update' : 'Add');
-    const [values, setValues] = useState<InitialValues>(formatedMember() ?? initialValues);
-    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
-    const dispatch = useDispatch();
+
+    const action: string = member ? 'Update' : 'Add';
+    const values: InitialValues = formatedMember() ?? initialValues;
 
     const handleSubmit = (values: InitialValues) => {
         if (member) {
@@ -81,7 +85,7 @@ const Form = () => {
                 <div className="row">
                     <div className="card col-lg-6">
                         <div className="login-title-box">
-                            <h1>{action} Employees</h1>
+                            <h1>{action} Employee</h1>
                         </div>
                         <Formik
                             initialValues={values}

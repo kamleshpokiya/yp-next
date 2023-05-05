@@ -24,24 +24,16 @@ export const tasksSlice = createSlice({
         updateTask: (state, action) => {
             return state.map(task => {
                 if (task.id === action.payload.id) {
-                    return action.payload;
-                }
-                return task;
-            });
-        },
-        archivedTaskById: (state, action) => {
-            return state.map(task => {
-                if (task.id === action.payload) {
                     return {
                         ...task,
-                        archived: true,
+                        ...action.payload
                     };
                 }
                 return task;
             });
-        }
+        },
     }
 });
 
-export const { addTask, updateTask, archivedTaskById } = tasksSlice.actions;
+export const { addTask, updateTask } = tasksSlice.actions;
 export default tasksSlice.reducer;

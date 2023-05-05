@@ -1,12 +1,14 @@
 // packages
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { ChangeEvent, useState } from 'react';
 // components
-import SearchBox from '@/components/SearchBox';
+import SearchField from '@/components/SearchField';
 // store
-import { getArchivedTasksByProjectId } from '@/store/selectors/tasks';
+import { updateTask } from '@/store/slices/tasks';
 import { RootState } from '@/store/rootReducer';
-// types
-import { Task } from '@/types';
+import { handleTaskDetailsId } from '@/store/slices/actions';
+import { getArchivedTasksByProjectId } from '@/store/selectors/tasks';
+import { getIsSidePanelOpen, getTaskDetailsId } from '@/store/selectors/actions';
 // sections
 import TaskCard from '@/sections/projectDetails/TaskCard';
 
@@ -17,23 +19,43 @@ type ArchivedProps = {
 };
 
 const Archived = ({ projectId }: ArchivedProps) => {
-    const archivedTasks = useSelector((state: RootState) => getArchivedTasksByProjectId(state, projectId));
-    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
-    const taskDetailsId = useSelector((state: RootState) => state.actions.taskDetailsId);
+    const [searchQuery, setSearchQuery] = useState<string>('');
+    const dispatch = useDispatch();
+    const isSidePanelOpen = useSelector(getIsSidePanelOpen);
+    const taskDetailsId = useSelector(getTaskDetailsId);
     const isTaskDetailsDrawerOpen = Boolean(taskDetailsId);
+    const archivedTasks = useSelector((state: RootState) => getArchivedTasksByProjectId(state, projectId));
+    const isSearchQuery = searchQuery.trim() !== '';
+
+    const getTasksBySearchedQuery = () => {
+        return archivedTasks?.filter((task) => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
+    }
+
+    const filteredTasks = isSearchQuery ? getTasksBySearchedQuery() : archivedTasks;
 
     return (
         <div className="tab-pane fade show active" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
             <div className={`padding-box ${isSidePanelOpen ? 'pdlb' : ''} ${isTaskDetailsDrawerOpen ? 'pdrb' : ''}`}>
-                <div className="archived-list-main-box">
-                    <SearchBox
-                        options={archivedTasks}
-                        getOptionLabel={(option: Task) => option.title}
+                <div className="archived-list-main-box custom-padding-searchbox">
+                    <SearchField
+                        value={searchQuery}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                     />
+
                     <div className="archived-list">
-                        {archivedTasks ? archivedTasks.map((task, key) => (
-                            <TaskCard key={key} {...task} />
-                        )) : null}
+                        {filteredTasks ? filteredTasks.map((task, key) => {
+                            const moveButton = {
+                                title: 'Delete Task',
+                                onClick: () => {
+                                    dispatch(updateTask({ id: task.id, status: 'Deleted' }));
+                                    dispatch(handleTaskDetailsId(null));
+                                },
+                            };
+
+                            return (
+                                <TaskCard key={key} {...task} moveButton={moveButton} />
+                            );
+                        }) : null}
                     </div>
                 </div>
             </div>

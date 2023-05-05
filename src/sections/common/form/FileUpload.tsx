@@ -37,7 +37,7 @@ const FileUpload = () => {
         <div className="account-box">
             <div className="input-main-box">
                 <div className="forms">
-                    <label htmlFor="inputDate">Upload document</label>
+                    <label htmlFor="inputDate">Upload Document</label>
 
                     <div {...getRootProps()} className="form__container">
                         Choose or Drag &amp; Drop Files

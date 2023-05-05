@@ -10,8 +10,8 @@ import Header from './Header';
 import SideBar from './SideBar';
 import Auth from './auth';
 // store
-import { RootState } from '@/store/rootReducer';
 import { handleEditTaskId, removeProjectDetailsId } from '@/store/slices/actions';
+import { getAccountIsLoggedIn } from '@/store/selectors/account';
 // hooks
 import useToggle from '@/hooks/useToggle';
 
@@ -22,10 +22,10 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-    const isLoggedIn = useSelector((state: RootState) => state.account.isLoggedIn);
     const router = useRouter();
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useToggle();
+    const isLoggedIn = useSelector(getAccountIsLoggedIn);
 
     useEffect(() => {
         dispatch(removeProjectDetailsId());

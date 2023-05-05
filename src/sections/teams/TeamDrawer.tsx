@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // components
 import Assigners from '@/components/Assigners';
 import Iconify from '@/components/Iconify';

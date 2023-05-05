@@ -1,16 +1,14 @@
 // packages
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, ChangeEvent } from 'react';
 // components
 import ApplyFilter from '@/components/ApplyFilter';
-import SearchBox from '@/components/SearchBox';
+import SearchField from '@/components/SearchField';
 // sections
 import ProjectCard from '@/sections/projects/ProjectCard';
 // store
 import { RootState } from '@/store/rootReducer';
 import { getProjectsByStatus } from '@/store/selectors/projects';
-// types
-import { Project } from '@/types';
 
 
 // types
@@ -19,34 +17,30 @@ type ProjectsProps = {
 };
 
 const Projects = ({ status }: ProjectsProps) => {
-    const [selectedProject, setSelectedProject] = useState(null);
+    const [searchQuery, setSearchQuery] = useState<string>('');
     const projects = useSelector((state: RootState) => getProjectsByStatus(state, status));
+    const isSearchQuery = searchQuery.trim() !== '';
 
-    const handleSelectChange = (selected: any) => {
-        setSelectedProject(selected);
-    };
+    const getProjectsBySearchedQuery = () => {
+        return projects?.filter((project) => project.title.toLowerCase().includes(searchQuery.toLowerCase()));
+    }
 
-    useEffect(() => {
-        setSelectedProject(null);
-    }, [status]);
+    const filteredProjects = isSearchQuery ? getProjectsBySearchedQuery() : projects;
 
     return (
         <div className="tab-pane fade show active" role="tabpanel" id="v-pills-home" aria-labelledby="v-pills-home-tab">
             <div className="search-btn">
-                <SearchBox
-                    options={projects}
-                    value={selectedProject}
-                    onChange={handleSelectChange}
-                    getOptionLabel={(option: Project) => option.title}
+                <SearchField
+                    value={searchQuery}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+                    placeholder='Search projects here...'
                 />
 
                 <ApplyFilter />
             </div>
             <div className="main-list-box scroll-bar-wrap">
                 <div className="scroll-box">
-                    {selectedProject ? [selectedProject].map((project, key) => (
-                        <ProjectCard key={key} project={project} />
-                    )) : projects.map((project, key) => (
+                    {filteredProjects.map((project, key) => (
                         <ProjectCard key={key} project={project} />
                     ))}
                 </div>

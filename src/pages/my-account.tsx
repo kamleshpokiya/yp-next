@@ -14,8 +14,8 @@ import TextArea from '@/components/TextArea';
 // types
 import { Account } from '@/types';
 // store
-import { RootState } from '@/store/rootReducer';
 import { updateAccount } from '@/store/slices/account';
+import { getAccount } from '@/store/selectors/account';
 
 
 const validationSchema = Yup.object({
@@ -29,7 +29,7 @@ const validationSchema = Yup.object({
 const MyAccount = () => {
     const dispatch = useDispatch();
     const router = useRouter();
-    const initialValues = useSelector((state: RootState) => state.account);
+    const initialValues = useSelector(getAccount);
 
     const onSubmit = (values: Account) => {
         dispatch(updateAccount(values));

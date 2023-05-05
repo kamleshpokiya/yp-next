@@ -7,31 +7,27 @@ import { ActionPanel, Projects as AllProjects } from '@/sections/projects';
 import Drawer from '@/sections/common/Drawer';
 import Form from '@/sections/common/form';
 // store
-import { RootState } from '@/store/rootReducer';
 import { addProject, updateProject } from '@/store/slices/projects';
 import { onProjectTabChange } from '@/store/slices/actions';
+import { getCurrentProjectTab } from '@/store/selectors/actions';
 // types
 import { Project, Task } from '@/types';
 
 
 const Projects = () => {
     const dispatch = useDispatch();
-    const currentTab = useSelector((state: RootState) => state.actions.currentProjectTab);
+    const currentTab = useSelector(getCurrentProjectTab);
 
-    const onSubmit = (values: Project | Task, isEditMode = false) => {
+    const onSubmit = ({ dueDate, status, ...rest }: Project | Task, isEditMode = false) => {
         const serializedValues = {
-            ...values,
-            dueDate: new Date(values.dueDate).toISOString(),
+            ...rest,
+            status,
+            dueDate: new Date(dueDate).toISOString(),
         };
 
-        if (isEditMode) {
-            dispatch(updateProject(serializedValues));
-        } else {
-            dispatch(addProject(serializedValues));
-        }
-
-        dispatch(onProjectTabChange(values.status === 'Pending Allocation' ? 'newProjects' : 'inProgressProjects'));
-    }
+        dispatch(isEditMode ? updateProject(serializedValues) : addProject(serializedValues));
+        dispatch(onProjectTabChange(status === 'Pending Allocation' ? 'newProjects' : 'inProgressProjects'));
+    };
 
     return (
         <Fragment>

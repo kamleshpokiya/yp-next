@@ -5,14 +5,17 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // hooks
 import useToggle from '@/hooks/useToggle';
 // store
 import { RootState } from '@/store/rootReducer';
 import { addComment } from '@/store/slices/comments';
+import { getCommentsByTaskId } from '@/store/selectors/comments';
+import { getAccountAvatar, getAccountFirstName, getAccountLastName } from '@/store/selectors/account';
 // utils
 import getAvatarName from '@/utils/getAvatarName';
+import { formatDate } from '@/utils/formatDate';
 
 
 // types
@@ -25,16 +28,15 @@ const Activity = ({ taskId }: ActivityProps) => {
     const { isOpen, onToggle } = useToggle();
     const { attachment, teamMember } = IMAGES;
     const dispatch = useDispatch();
-    const userProfileImg = useSelector((state: RootState) => state.account.avatar);
-    const firstName = useSelector((state: RootState) => state.account.firstName);
-    const lastName = useSelector((state: RootState) => state.account.lastName);
-    const comments = useSelector((state: RootState) => state.comments.filter((comment) => comment.taskId === taskId));
+    const userProfileImg = useSelector(getAccountAvatar);
+    const firstName = useSelector(getAccountFirstName);
+    const lastName = useSelector(getAccountLastName);
+    const comments = useSelector((state: RootState) => getCommentsByTaskId(state, taskId));
     const fullName = `${firstName} ${lastName}`;
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             if (comment.trim() !== '') {
-                console.log('comment: ', comment);
                 const newComment = {
                     taskId,
                     commenter: firstName + ' ' + lastName,
@@ -44,18 +46,6 @@ const Activity = ({ taskId }: ActivityProps) => {
             }
             setComment('');
         }
-    }
-
-    const formatDateTime = (dateTimeStr: Date) => {
-        const dateObj = new Date(dateTimeStr);
-        const month = dateObj.toLocaleString('default', { month: 'short' });
-        const day = dateObj.getDate();
-        const hour = dateObj.getHours() % 12 || 12;
-        const minute = dateObj.getMinutes();
-        const meridiem = dateObj.getHours() >= 12 ? 'PM' : 'AM';
-        const formattedDate = `${month} ${day} at ${hour}:${minute.toString().padStart(2, '0')}${meridiem}`;
-
-        return formattedDate;
     }
 
     return (
@@ -118,7 +108,8 @@ const Activity = ({ taskId }: ActivityProps) => {
                                             </a>
                                             <span className="time">
                                                 <a href="#">
-                                                    {formatDateTime(comment.date)}
+                                                    {/* {formatDateTime(comment.date)} */}
+                                                    {formatDate(comment.date, 'dd-MM-yyyy hh:mm a')}
                                                 </a>
                                             </span>
                                         </div>
@@ -142,7 +133,7 @@ const Activity = ({ taskId }: ActivityProps) => {
                                         </a>
                                         <span className="time">
                                             <a href="#">
-                                                Mar 30 at3:20PM
+                                                30-2-2023 3:20 PM
                                             </a>
                                         </span>
                                     </div>
@@ -195,7 +186,7 @@ const Activity = ({ taskId }: ActivityProps) => {
                                         </a>
                                         <span className="time">
                                             <a href="#">
-                                                Mar 30 at3:20PM
+                                                18-2-2023 4:15 PM
                                             </a>
                                         </span>
                                     </div>
@@ -219,7 +210,7 @@ const Activity = ({ taskId }: ActivityProps) => {
                                         </a>
                                         <span className="time">
                                             <a href="#">
-                                                Mar 30 at3:20PM
+                                                17-2-2023 4:15 PM
                                             </a>
                                         </span>
                                     </div>

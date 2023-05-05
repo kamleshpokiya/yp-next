@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 // components
 import InputField from '@/components/InputField';
 // store
-import { RootState } from '@/store/rootReducer';
 import { handleSingnIn } from '@/store/slices/account';
+import { getAccountEmail, getAccountPassword } from '@/store/selectors/account';
 // utils
 import { comparePassword } from '@/utils/auth';
 
@@ -31,14 +31,14 @@ const initialValues: InitialValues = {
 };
 
 const validationSchema = Yup.object({
-    email: Yup.string().email('Please enter valid email address').required('Please enter your email address'),
+    email: Yup.string().email('Please enter a valid email address.').required('Please enter your email address.'),
     password: Yup.string()
-        .required('Please enter new password'),
+        .required('Please enter your password.'),
 });
 
 const SignIn = ({ onSignUp }: SignInProps) => {
-    const email = useSelector((state: RootState) => state.account.email);
-    const password = useSelector((state: RootState) => state.account.password);
+    const email = useSelector(getAccountEmail);
+    const password = useSelector(getAccountPassword);
     const dispatch = useDispatch();
 
     const onSubmit = async (values: InitialValues, { setFieldError }: { setFieldError: any }) => {
@@ -51,11 +51,11 @@ const SignIn = ({ onSignUp }: SignInProps) => {
                         isLoggedIn: true,
                     }));
                 } else {
-                    setFieldError('password', 'Please enter correct password');
+                    setFieldError('password', 'Please enter the correct password.');
                 }
             }
         } else {
-            setFieldError('email', 'Email does not exist');
+            setFieldError('email', 'We could not find an account associated with that email address');
         }
     };
 

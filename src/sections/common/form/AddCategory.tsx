@@ -1,5 +1,5 @@
 // packages
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 // hooks
 import useToggle from '@/hooks/useToggle';
@@ -54,7 +54,7 @@ const AddCategory = ({ selectedCategories, setSelectedCategories }: AddCategoryP
                             name="text"
                             placeholder="Name of category"
                             value={newCategory}
-                            onChange={(e: any) => setNewCategory(e.target.value)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setNewCategory(e.target.value)}
                         />
                         <button className="add-button star-btn" type='button' disabled={newCategory === ''} onClick={onAddNewCategory}>Add</button>
                     </div>

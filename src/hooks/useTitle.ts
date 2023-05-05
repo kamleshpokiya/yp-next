@@ -22,6 +22,10 @@ const useTitle = () => {
         case '/change-password':
             title = 'Change Password';
             break;
+        
+        case `/projects/${router.query.projectId}`:
+            title = 'Tasks';
+            break;
 
         default:
             title = 'Projects';

@@ -9,11 +9,12 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // store
 import { RootState } from '@/store/rootReducer';
 import { getProjectById } from '@/store/selectors/projects';
 import { getTaskById } from '@/store/selectors/tasks';
+import { getEditProjectId, getEditTaskId, getIsSidePanelOpen } from '@/store/selectors/actions';
 
 
 // types
@@ -39,16 +40,15 @@ const Form = ({
     onSubmit,
     formTitle,
 }: FormProps) => {
-    const editProjectId = useSelector((state: RootState) => state.actions.editProjectId);
-    const project = useSelector((state: RootState) => getProjectById(state, editProjectId));
-    const editTaskId = useSelector((state: RootState) => state.actions.editTaskId);
-    const task = useSelector((state: RootState) => getTaskById(state, editTaskId));
-    const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
-
-    const [action, setAction] = useState(editProjectId ? 'Update' : editTaskId ? 'Update' : 'Create');
-    const [title, setTitle] = useState(formTitle ?? 'Project');
     const [currentStep, setCurrentStep] = useState(0);
+    const editProjectId = useSelector(getEditProjectId);
+    const editTaskId = useSelector(getEditTaskId);
+    const isSidePanelOpen = useSelector(getIsSidePanelOpen);
+    const project = useSelector((state: RootState) => getProjectById(state, editProjectId));
+    const task = useSelector((state: RootState) => getTaskById(state, editTaskId));
     const [data, setData] = useState(project ? project : task ? task : initialProjectValues);
+    const action = editProjectId ? 'Update' : editTaskId ? 'Update' : 'Create';
+    const title = formTitle ?? 'Project';
     const { ChevronRightIcon } = IMAGES;
 
 

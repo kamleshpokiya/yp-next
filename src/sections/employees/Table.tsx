@@ -1,16 +1,17 @@
 // packages
 import DataTable, { TableColumn, ConditionalStyles } from 'react-data-table-component';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMemo, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { Tooltip } from 'react-tooltip';
 // components
-import SearchBox from '@/components/SearchBox';
 import Iconify from '@/components/Iconify';
+import SearchField from '@/components/SearchField';
 // store
-import { RootState } from '@/store/rootReducer';
 import { onRemoveMember } from '@/store/slices/members';
 import { handleEditMemberId, onEmployeeTabChanage } from '@/store/slices/actions';
+import { getAllMembers } from '@/store/selectors/members';
+import { getIsSidePanelOpen } from '@/store/selectors/actions';
 // types
 import { Member } from '@/types';
 
@@ -48,9 +49,16 @@ const customStyles = {
 const conditionalRowStyles: ConditionalStyles<Member>[] = [];
 
 const Table = () => {
-  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
-  const members = useSelector((state: RootState) => state.members);
-  const isSidePanelOpen = useSelector((state: RootState) => state.actions.isSidePanelOpen);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const members = useSelector(getAllMembers);
+  const isSidePanelOpen = useSelector(getIsSidePanelOpen);
+  const isSearchQuery = searchQuery.trim() !== '';
+
+  const getMembersBySearchedQuery = () => {
+    return members.filter((member) => member.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  }
+
+  const filteredMembers = isSearchQuery ? getMembersBySearchedQuery() : members;
 
   const columns: TableColumn<Member>[] = useMemo(
     () => [
@@ -90,17 +98,15 @@ const Table = () => {
     <div className="tab-pane fade show active">
       <div className={`padding-box ${isSidePanelOpen ? 'pdlb' : ''}`}>
         <div className="data-table-main-box">
-          <SearchBox
-            options={members}
-            value={selectedMember}
-            onChange={(selected: Member) => setSelectedMember(selected)}
-            getOptionLabel={(option: Member) => option.name}
-            placeholder='Search for employees here...'
+          <SearchField
+            value={searchQuery}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+            placeholder='Search employees here...'
           />
 
           <DataTable
             columns={columns}
-            data={selectedMember ? [selectedMember] : members}
+            data={filteredMembers}
             customStyles={customStyles}
             conditionalRowStyles={conditionalRowStyles}
             responsive

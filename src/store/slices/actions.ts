@@ -12,6 +12,7 @@ type InitialState = {
     currentTaskTab: string,
     editTaskId: null | string,
     taskDetailsId: null | string,
+    viewProjectId: null | string,
 };
 
 const initialState: InitialState = {
@@ -24,6 +25,7 @@ const initialState: InitialState = {
     currentTaskTab: 'tasks',
     editTaskId: null,
     taskDetailsId: null,
+    viewProjectId: null,
 };
 
 export const actionsSlice = createSlice({
@@ -69,6 +71,9 @@ export const actionsSlice = createSlice({
         handleEditProjectId: (state, action) => {
             state.editProjectId = action.payload ?? null;
         },
+        onViewProjectId: (state, action) => {
+            state.viewProjectId = action.payload ?? null;
+        },
 
         // Task Actions
         handleEditTaskId: (state, action) => {
@@ -92,5 +97,6 @@ export const {
     onTaskTabChange,
     handleEditTaskId,
     handleTaskDetailsId,
+    onViewProjectId,
 } = actionsSlice.actions;
 export default actionsSlice.reducer;

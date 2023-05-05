@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 // components
 import InputField from '@/components/InputField';
 // store
-import { RootState } from '@/store/rootReducer';
 import { updatePassword } from '@/store/slices/account';
+import { getAccountPassword } from '@/store/selectors/account';
 // utils
 import { comparePassword, hashPassword } from '@/utils/auth';
 
@@ -41,21 +41,21 @@ const validationSchema = Yup.object({
 const ChangePassword = () => {
     const dispatch = useDispatch();
     const router = useRouter();
-    const currentPassword = useSelector((state: RootState) => state.account.password);
+    const currentPassword = useSelector(getAccountPassword);
 
     const onSubmit = async (values: InitialValues, { setFieldError }: { setFieldError: any }) => {
-        if (currentPassword) {
-            const isPasswordMatched = await comparePassword(values.currentPassword, currentPassword);
+        if (!currentPassword) return;
 
-            if (isPasswordMatched) {
-                const hashedPassword = await hashPassword(values.newPassword);
+        const isPasswordMatched = await comparePassword(values.currentPassword, currentPassword);
 
-                dispatch(updatePassword(hashedPassword));
-                router.push('/');
-            } else {
-                setFieldError('currentPassword', 'Please enter correct password');
-            }
+        if (!isPasswordMatched) {
+            setFieldError('currentPassword', 'Please enter correct password.');
+            return;
         }
+
+        const hashedPassword = await hashPassword(values.newPassword);
+        dispatch(updatePassword(hashedPassword));
+        router.push('/');
     }
 
     return (

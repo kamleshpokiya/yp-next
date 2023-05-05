@@ -11,3 +11,7 @@ export const getMembersIds = (members: Member[]) => {
 export const getTeamsIds = (teams: Team[]) => {
     return sampleSize(teams, random(3, teams.length)).map(obj => obj.id);
 }
+
+export const filterBySearchQuery = <T,>(items: T[], searchQuery: string, key: keyof T) => {
+    return items.filter((item: any) => item[key].toString().toLowerCase().includes(searchQuery.toLowerCase()));
+}

@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { useSelector } from 'react-redux';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // components
 import Iconify from '@/components/Iconify';
 // store
-import { RootState } from '@/store/rootReducer';
+import { getAccountAvatar } from '@/store/selectors/account';
 
 
 // types
@@ -24,7 +24,7 @@ type TeamAvatarProps = {
 
 const TeamAvatar = ({ isDefaultAvatarImage }: TeamAvatarProps) => {
     const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
-    const defaultAvatar = useSelector((state: RootState) => state.account.avatar);
+    const defaultAvatar = useSelector(getAccountAvatar);
     const { boyAvatar } = IMAGES;
 
     const handleDrop = async (acceptedFiles: File[]) => {

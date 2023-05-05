@@ -5,7 +5,7 @@ import ActionButton from '@/sections/common/ActionButton';
 import PanelWrap from '@/sections/common/PanelWrap';
 // store
 import { onEmployeeTabChanage } from '@/store/slices/actions';
-import { RootState } from '@/store/rootReducer';
+import { getCurrentEmployeeTab } from '@/store/selectors/actions';
 
 
 // types
@@ -25,7 +25,7 @@ const employeeTabs: EmployeeTab[] = [
 
 const ActionPanel = () => {
     const dispatch = useDispatch();
-    const currentTab = useSelector((state: RootState) => state.actions.currentEmployeeTab);
+    const currentTab = useSelector(getCurrentEmployeeTab);
 
     const handleTabChange = (tab: string) => {
         dispatch(onEmployeeTabChanage(tab));

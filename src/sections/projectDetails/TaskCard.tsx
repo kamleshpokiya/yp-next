@@ -5,17 +5,29 @@ import { Tooltip } from 'react-tooltip';
 import { useDispatch } from 'react-redux';
 // components
 import Chip from '@/components/Chip';
+import MenuPopover from '@/components/MenuPopover';
 // types
 import { Task } from '@/types';
 // utils
 import { formatDate } from '@/utils/formatDate';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // store
 import { handleEditTaskId, handleTaskDetailsId, onTaskTabChange } from '@/store/slices/actions';
-// sections
-import MenuPopover from '@/sections/projects/MenuPopover';
 
+
+type Action = {
+    title: string,
+    href?: string,
+    onClick?: (e?: any) => void,
+};
+
+type TaskCardProps = Task & {
+    moveButton?: {
+        title: string,
+        onClick: () => void,
+    }
+}
 
 const TaskCard = ({
     id,
@@ -23,7 +35,8 @@ const TaskCard = ({
     description,
     dueDate,
     categories,
-}: Task) => {
+    moveButton,
+}: TaskCardProps) => {
     const dispatch = useDispatch();
     const { documentInfoIcon, documentEditIcon } = IMAGES;
 
@@ -31,6 +44,19 @@ const TaskCard = ({
         dispatch(onTaskTabChange('addTask'));
         dispatch(handleEditTaskId(id));
     };
+
+    const actions: Action[] = [
+        {
+            title: 'Edit Task',
+            onClick: handleEditTask
+        },
+        {
+            title: 'Task Details',
+            onClick: () => dispatch(handleTaskDetailsId(id)),
+        },
+    ];
+
+    moveButton ? actions.push(moveButton) : null;
 
     return (
         <div className="task-contain">
@@ -61,7 +87,7 @@ const TaskCard = ({
                 <Tooltip id={id} style={{ zIndex: 1 }} />
             </div>
 
-            <MenuPopover id={id} />
+            <MenuPopover actions={actions} />
         </div>
     )
 };

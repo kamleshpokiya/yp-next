@@ -32,7 +32,7 @@ const Teams = () => {
                 <div className={`col-md-4 first-team-form-box ${isOpen ? 'yykk' : ''}`}>
                     <div className="new-teams-main-box">
                         <div className="login-title-box">
-                            <h3>New team</h3>
+                            <h3>New Team</h3>
                             <div className="res-x-btn" onClick={onClose}>
                                 <button>X</button>
                             </div>
@@ -64,7 +64,6 @@ const Teams = () => {
                     </svg>
                 </div>
             </div>
-
         </Fragment>
     );
 };

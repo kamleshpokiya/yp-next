@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 // images
-import IMAGES from '@/assets/img';
+import IMAGES from '@/assets/images';
 // components
 import Assigners from '@/components/Assigners';
 // hooks
@@ -12,11 +12,14 @@ import useToggle from '@/hooks/useToggle';
 import { getMembers } from '@/store/selectors/members';
 import { getTeams } from '@/store/selectors/teams';
 import { RootState } from '@/store/rootReducer';
+import { getTaskById } from '@/store/selectors/tasks';
 import { handleEditTaskId, handleTaskDetailsId, onTaskTabChange } from '@/store/slices/actions';
 // utils
 import { formatDate } from '@/utils/formatDate';
 // sections
 import Activity from './Activity';
+import { getTaskNextStage } from './tasks';
+import { updateTask } from '@/store/slices/tasks';
 
 
 // types
@@ -27,11 +30,11 @@ type DrawerProps = {
 const MAX_CONTENT = 100;
 
 const Drawer = ({ taskId }: DrawerProps) => {
-    const task = useSelector((state: RootState) => state.tasks.find(task => task.id === taskId));
+    const task = useSelector((state: RootState) => getTaskById(state, taskId));
     const { isOpen: isShowMore, onToggle: onShowMore } = useToggle();
     const members = useSelector((state: RootState) => getMembers(state, task?.memberIds));
     const teams = useSelector((state: RootState) => getTeams(state, task?.teamIds));
-    const { leftArrowIcon, attachment } = IMAGES;
+    const { leftArrowIcon } = IMAGES;
     const dispatch = useDispatch();
 
     const assignedMembers = members.map((member) => ({
@@ -54,6 +57,12 @@ const Drawer = ({ taskId }: DrawerProps) => {
         dispatch(onTaskTabChange('addTask'));
         dispatch(handleEditTaskId(taskId));
     };
+
+    const onUpdateTask = () => {
+        if (!task?.status) return;
+        dispatch(updateTask({ id: task.id, status: getTaskNextStage(task.status) }));
+        dispatch(handleTaskDetailsId(null));
+    }
 
 
     if (!task) return null;
@@ -97,21 +106,27 @@ const Drawer = ({ taskId }: DrawerProps) => {
                                     </div>
                                 </div>
                                 <div className="des-boxs" id="attachments">
-                                    <h4>
-                                        Attachments:
-                                    </h4>
+                                    <h4>Attachments:</h4>
                                     <div className="pdf-main-bpx">
                                         <a className="pdf">
                                             <i className="fa-solid fa-file-pdf" />
-                                            <p>
-                                                pdf-file
-                                            </p>
+                                            <p>Guidance.pdf</p>
+                                        </a>
+                                        <a className="pdf">
+                                            <i className="fa-solid fa-file-excel" />
+                                            <p>Chartdata.xlsx</p>
                                         </a>
                                         <a className="pdf">
                                             <i className="fa-solid fa-file-image" />
-                                            <p>
-                                                pdf-file
-                                            </p>
+                                            <p>Screenshot-1.png</p>
+                                        </a>
+                                        <a className="pdf">
+                                            <i className="fa-solid fa-file-image" />
+                                            <p>Screenshot-2.png</p>
+                                        </a>
+                                        <a className="pdf">
+                                            <i className="fa-solid fa-file-image" />
+                                            <p>References.jpg</p>
                                         </a>
                                     </div>
                                 </div>
@@ -139,7 +154,10 @@ const Drawer = ({ taskId }: DrawerProps) => {
                                     </div>
                                 </div>
                                 <div className="move-box">
-                                    <button>Move..</button>
+                                    <button
+                                        className='star-btn next_button'
+                                        onClick={onUpdateTask}
+                                    >{task.status === 'Archived' ? 'Delete Task' : `Move To ${getTaskNextStage(task.status)}`}</button>
                                 </div>
                             </div>
                         </div>

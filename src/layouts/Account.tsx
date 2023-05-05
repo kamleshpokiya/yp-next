@@ -9,13 +9,13 @@ import Iconify from '@/components/Iconify';
 // hooks
 import useToggle from '@/hooks/useToggle';
 // store
-import { RootState } from '@/store/rootReducer';
 import { handleSingnOut } from '@/store/slices/account';
+import { getAccountAvatar } from '@/store/selectors/account';
 
 
 const Account = () => {
     const { isOpen, onToggle, onClose } = useToggle();
-    const avatar = useSelector((state: RootState) => state.account.avatar);
+    const avatar = useSelector(getAccountAvatar);
     const dispatch = useDispatch();
 
     return (

@@ -22,8 +22,7 @@ const tasks: Task[] = new Array(200).fill(0).map(() => ({
     categories: sampleSize(categories, random(1,2)),
     memberIds: getMembersIds(members),
     teamIds: getTeamsIds(teams),
-    status: sample(['Todo', 'In Progress', 'Completed']) ?? 'Todo',
-    archived: faker.datatype.boolean(),
+    status: faker.helpers.arrayElement(['Todo', 'In Progress', 'Completed', 'Archived']),
 }));
 
 export default tasks;

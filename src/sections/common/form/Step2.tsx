@@ -1,15 +1,18 @@
 // packages
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 // types
-import { Member, Project, Task, Team } from '@/types';
+import { Project, Task } from '@/types';
 // components
-import SearchBox from '@/components/SearchBox';
 import Assigners from '@/components/Assigners';
+import SearchField from '@/components/SearchField';
 // store
-import { RootState } from '@/store/rootReducer';
+import { getAllMembers } from '@/store/selectors/members';
+import { getAllTeams } from '@/store/selectors/teams';
+// utils
+import { filterBySearchQuery } from '@/utils/common';
 
 
 // types
@@ -30,13 +33,26 @@ const validationSchema = Yup.object({
 });
 
 const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
-    const [selectedMember, setSelectedMember] = useState<Member | null>(null);
-    const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
+    const [searchMemberQuery, setSearchMemberQuery] = useState<string>('');
+    const [searchTeamQuery, setSearchTeamQuery] = useState<string>('');
     const [checkedMembers, setCheckedMembers] = useState<string[]>(data?.memberIds ?? []);
     const [checkedTeams, setCheckedTeams] = useState<string[]>(data.teamIds ?? []);
+    const members = useSelector(getAllMembers);
+    const teams = useSelector(getAllTeams);
+    const isSearchMemberQuery = searchMemberQuery.trim() !== '';
+    const isSearchTeamQuery = searchTeamQuery.trim() !== '';
 
-    const members = useSelector((state: RootState) => state.members);
-    const teams = useSelector((state: RootState) => state.teams);
+    const getMembersBySearchedQuery = () => {
+        return members.filter((member) => member.name.toLowerCase().includes(searchMemberQuery.toLowerCase()));
+    }
+
+    const getTeamsBySearchedQuery = () => {
+        return teams.filter((team) => team.name.toLowerCase().includes(searchTeamQuery.toLowerCase()));
+    }
+
+    const filteredMembers = isSearchMemberQuery ? filterBySearchQuery(members, searchMemberQuery, 'name') : members;
+    const filteredTeams = isSearchTeamQuery ? filterBySearchQuery(teams, searchTeamQuery, 'name') : teams;
+
 
     const formateMember = (member: any) => ({
         id: member?.id,
@@ -52,19 +68,8 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
         description: team?.memberIds.length ? `${team?.memberIds.length} members` : '',
     });
 
-    const formatedMembers = members.map(formateMember);
-    const formatedMember = formateMember(selectedMember);
-
-    const formatedTeams = teams.map(formateTeam);
-    const formatedTeam = formateTeam(selectedTeam);
-
-    const onSelectMember = (selected: Member | null) => {
-        setSelectedMember(selected);
-    };
-
-    const onSelectTeam = (selected: Team | null) => {
-        setSelectedTeam(selected);
-    };
+    const formatedMembers = filteredMembers.map(formateMember);
+    const formatedTeams = filteredTeams.map(formateTeam);
 
     const mergeAll = (values: Project | Task) => ({
         ...values,
@@ -85,7 +90,7 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
     }
 
     return (
-        <div className="main active">
+        <div className="main active form-step-3">
             <div className="sign-up-wrapper login-account">
                 <div className=" login-form survey-form">
                     <div className="account-box">
@@ -99,32 +104,28 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
                                     <Form>
                                         <div className="input">
                                             <label>Assign</label>
-                                            <div className="main-search-box row">
+                                            <div className="main-search-box row assign-card-wrapper">
                                                 <div className="first-box col-xl-6">
-                                                    <SearchBox
-                                                        options={members}
-                                                        value={selectedMember}
-                                                        onChange={onSelectMember}
-                                                        placeholder="Search Here User..."
-                                                        getOptionLabel={(option: Member) => option.name}
+                                                    <SearchField
+                                                        value={searchMemberQuery}
+                                                        onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchMemberQuery(e.target.value)}
+                                                        placeholder='Search users here...'
                                                     />
                                                     <Assigners
-                                                        assigners={selectedMember ? [formatedMember] : formatedMembers}
+                                                        assigners={formatedMembers}
                                                         isSelectable
                                                         checkedList={checkedMembers}
                                                         setCheckedList={setCheckedMembers}
                                                     />
                                                 </div>
                                                 <div className="secend-box col-xl-6">
-                                                    <SearchBox
-                                                        options={teams}
-                                                        value={selectedTeam}
-                                                        onChange={onSelectTeam}
-                                                        placeholder="Search Here Team..."
-                                                        getOptionLabel={(option: Member) => option.name}
+                                                    <SearchField
+                                                        value={searchTeamQuery}
+                                                        onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTeamQuery(e.target.value)}
+                                                        placeholder='Search teams here...'
                                                     />
                                                     <Assigners
-                                                        assigners={selectedTeam ? [formatedTeam] : formatedTeams}
+                                                        assigners={formatedTeams}
                                                         isSelectable
                                                         checkedList={checkedTeams}
                                                         setCheckedList={setCheckedTeams}
