@@ -11,6 +11,7 @@ type ChipProps = {
     categories: string[],
 };
 
+// chip component
 const Chip = ({ categories }: ChipProps) => {
     return (
         <div className="button-box">

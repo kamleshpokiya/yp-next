@@ -11,9 +11,11 @@ type TeamPreviewProps = {
     onItemClick: (id: string) => void,
 };
 
+// team preview component
 const TeamPreview = ({ onItemClick }: TeamPreviewProps) => {
     const teams = useSelector(getAllTeams);
 
+    // formate team
     const formateTeam = (team: any) => ({
         id: team?.id,
         name: team?.name,
@@ -21,6 +23,7 @@ const TeamPreview = ({ onItemClick }: TeamPreviewProps) => {
         description: team?.memberIds.length ? `${team?.memberIds.length} members` : 'No members',
     });
 
+    // formated teams
     const formatedTeams = teams.map(formateTeam);
 
     return (

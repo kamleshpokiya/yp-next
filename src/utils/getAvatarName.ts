@@ -1,3 +1,4 @@
+// get avatar name from full name : John Dial => JD
 const getAvatarName = (fullName: string) => {
     const [firstName, lastName] = fullName.trim().split(/\s+/);
   const firstInitial = firstName ? firstName.charAt(0).toUpperCase() : 'N';

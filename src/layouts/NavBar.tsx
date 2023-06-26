@@ -34,6 +34,8 @@ const {
 
 type Icon = typeof logo;
 
+
+// navigation links
 const navLinks: NavLinks<Icon> = [
     {
         href: '/',
@@ -67,7 +69,7 @@ const navLinks: NavLinks<Icon> = [
     },
 ];
 
-
+// navbar component
 const NavBar = ({ isNavBarOpen }: NavBarProps) => {
     const router = useRouter();
     const dispatch = useDispatch();

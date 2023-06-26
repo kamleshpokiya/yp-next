@@ -12,6 +12,7 @@ import categories from './categories';
 import { getMembersIds, getTeamsIds } from '@/utils/common';
 
 
+// static tasks
 const tasks: Task[] = new Array(200).fill(0).map(() => ({
     id: faker.datatype.uuid(),
     projectId: sample(projects)?.id ?? projects[0].id,

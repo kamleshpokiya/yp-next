@@ -9,6 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     divClasses?: string;
 }
 
+// input field
 const InputField: React.FC<InputProps> = ({ label, divClasses, ...rest }) => {
     return (
         <div className={`input-box input ${divClasses}`}>

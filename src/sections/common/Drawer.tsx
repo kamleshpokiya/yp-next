@@ -20,6 +20,7 @@ import Assigners from '@/components/Assigners';
 
 const MAX_CONTENT = 100;
 
+// drawer component
 const Drawer = () => {
     const { isOpen: isShowMore, onToggle: onShowMore } = useToggle();
     const { leftArrowIcon } = IMAGES;
@@ -29,6 +30,7 @@ const Drawer = () => {
     const members = useSelector((state: RootState) => getMembers(state, projectDetails?.memberIds));
     const teams = useSelector((state: RootState) => getTeams(state, projectDetails?.teamIds));
 
+    // formate assigned members
     const assignedMembers = members.map((member) => ({
         id: member?.id,
         name: member?.name,
@@ -36,6 +38,7 @@ const Drawer = () => {
         description: member?.designation,
     }));
 
+    // formate assigned teams
     const assignedTeams = teams.map((team) => ({
         id: team?.id,
         name: team?.name,
@@ -43,8 +46,10 @@ const Drawer = () => {
         description: `${team?.memberIds.length} members`,
     }));
 
+    // assigners : all the assigned members and teams
     const assigners = assignedMembers.concat(assignedTeams);
 
+    // add project id and change tab to edit project
     const handleEditProject = () => {
         dispatch(onProjectTabChange('addProject'));
         dispatch(handleEditProjectId(projectDetailsId));

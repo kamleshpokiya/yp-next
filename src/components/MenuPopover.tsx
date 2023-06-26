@@ -16,6 +16,7 @@ type MenuPopoverProps<T> = {
     actions: Action<T>[];
 };
 
+// menu popover component
 const MenuPopover = <T,>({ actions }: MenuPopoverProps<T>) => {
     const { isOpen, onOpen, onClose } = useToggle();
 

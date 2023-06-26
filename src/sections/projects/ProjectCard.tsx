@@ -29,6 +29,7 @@ type Action = {
     onClick?: (e?: any) => void,
 };
 
+// project card component
 const ProjectCard = ({ project }: ProjectCardProps) => {
     const dispatch = useDispatch();
     const router = useRouter();
@@ -36,17 +37,20 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     const isProjectDetailsPage = router.asPath.includes(`/projects/${router.query.projectId}`);
     const { id, title, dueDate, categories, status, deadline } = project;
 
+    // add project id and change tab to edit project
     const handleEditProject = (e: React.MouseEvent<HTMLSpanElement>) => {
         e.stopPropagation();
         dispatch(onProjectTabChange('addProject'));
         dispatch(handleEditProjectId(id));
     }
 
+    // add project id to view project details
     const onViewProjectDetails = (e: React.MouseEvent<HTMLSpanElement>) => {
         e.stopPropagation();
-        dispatch(addProjectDetailsId(id))
+        dispatch(addProjectDetailsId(id));
     }
 
+    // tab actions
     const actions: Action[] = [
         {
             title: 'Edit Project',

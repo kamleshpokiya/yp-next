@@ -4,6 +4,7 @@ type Notification = {
     description: string,
 };
 
+// static notifications
 const notifications: Notification[] = [
     { title: 'New Message', description: 'You have a new message from John Doe' },
     { title: 'Package Delivered', description: 'Your package has been delivered to your front porch' },

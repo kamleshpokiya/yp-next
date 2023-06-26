@@ -9,6 +9,7 @@ type DatePickerProps = {
     label: string,
 }
 
+// date picker component
 const DatePicker = ({ label, name, ...rest }: DatePickerProps) => {
     const [field, meta, helpers] = useField(name);
 

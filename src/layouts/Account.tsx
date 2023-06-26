@@ -13,6 +13,7 @@ import { handleSingnOut } from '@/store/slices/account';
 import { getAccountAvatar } from '@/store/selectors/account';
 
 
+// account popup component
 const Account = () => {
     const { isOpen, onToggle, onClose } = useToggle();
     const avatar = useSelector(getAccountAvatar);

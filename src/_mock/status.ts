@@ -3,6 +3,7 @@ type StatusColor = {
     [key: string] : string,
 };
 
+// static status colors
 export const statusColor: StatusColor = {
     error: '#ff2f2fe0',
     information: '#9095f7',
@@ -11,6 +12,7 @@ export const statusColor: StatusColor = {
     pending: '#FFA500',
 };
 
+// static status types
 const statusType: string[] = [
     'error',
     'information',

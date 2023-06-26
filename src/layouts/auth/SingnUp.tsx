@@ -42,6 +42,11 @@ const validationSchema = Yup.object({
 const SignUp = ({ onSignIn }: SignUpProps) => {
     const dispatch = useDispatch();
 
+    /**
+     *  1. The sign-up functionality relies on static data for authentication.
+     *  2. To implement this functionality with real users, backend functionality needs to be added.
+    */
+    // handle sign up
     const onSubmit = async (values: InitialValues) => {
         const hashedPassword = await hashPassword(values.newPassword);
         console.log('hashedPassword: ', hashedPassword);
@@ -76,6 +81,7 @@ const SignUp = ({ onSignIn }: SignUpProps) => {
                             label='New Password'
                             name='newPassword'
                             id='newPassword'
+                            type='password'
                             className='search-area'
                             placeholder='Enter your new Password...'
                         />
@@ -83,6 +89,7 @@ const SignUp = ({ onSignIn }: SignUpProps) => {
                             label='Confirm Password'
                             name='confirmPassword'
                             id='confirmPassword'
+                            type='password'
                             className='search-area'
                             placeholder='Enter your confirm Password...'
                         />

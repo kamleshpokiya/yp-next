@@ -1,12 +1,13 @@
 // packages
 import { useRouter } from 'next/router';
 
-
+// useTitle hook
 const useTitle = () => {
     const router = useRouter();
     const { asPath } = router;
     let title: string;
 
+    // update title when route/page change
     switch (asPath) {
         case '/employees':
             title = 'Employees';

@@ -5,6 +5,7 @@ type ActionButtonProps = {
     onClick: () => void,
 };
 
+// action button componenet
 const ActionButton = ({ label, className, onClick }: ActionButtonProps) => {
     return (
         <a

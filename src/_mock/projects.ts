@@ -8,6 +8,7 @@ import { getMembersIds } from '@/utils/common';
 import members from './members';
 
 
+// static projects
 const projects: Project[] = [
     {
         id: faker.datatype.uuid(),

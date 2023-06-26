@@ -14,10 +14,17 @@ import { getCurrentProjectTab } from '@/store/selectors/actions';
 import { Project, Task } from '@/types';
 
 
+// projects page component
 const Projects = () => {
     const dispatch = useDispatch();
     const currentTab = useSelector(getCurrentProjectTab);
 
+    /**
+     * 1. Adds or updates a project using static data.
+     * 2. Backend functionality is not implemented, so the data will not persist in real time.
+     * 3. If desired, backend functionality can be added to enable real-time data updates.
+     */
+    // handle add/update project
     const onSubmit = ({ dueDate, status, ...rest }: Project | Task, isEditMode = false) => {
         const serializedValues = {
             ...rest,
@@ -26,6 +33,7 @@ const Projects = () => {
         };
 
         dispatch(isEditMode ? updateProject(serializedValues) : addProject(serializedValues));
+        // redirect to projects tab via status
         dispatch(onProjectTabChange(status === 'Pending Allocation' ? 'newProjects' : 'inProgressProjects'));
     };
 

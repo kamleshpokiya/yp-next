@@ -7,6 +7,7 @@ import { Member } from '@/types';
 import designations from './designations';
 
 
+// static members
 const members: Member[] = new Array(10).fill(0).map(() => ({
     id: faker.datatype.uuid(),
     name: faker.name.fullName(),

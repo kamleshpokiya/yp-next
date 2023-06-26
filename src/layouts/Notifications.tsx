@@ -8,8 +8,12 @@ import notifications from '@/_mock/notifications';
 import Iconify from '@/components/Iconify';
 
 
+// notification popup component
 const Notifications = () => {
     const { isOpen, onToggle, onClose } = useToggle();
+
+    // 1. The notifications functionality is currently implemented using static data.
+    // 2. To add read time notifications functionality, backend functionality needs to be implemented.
 
     return (
         <li className="notification right-side-icon" id="active" >

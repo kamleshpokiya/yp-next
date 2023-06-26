@@ -2,10 +2,12 @@
 import { statusColor } from '@/_mock/status';
 
 
+// get color by status
 export const getColor = (status: string) => {
   return statusColor[status];
 };
 
+// generate lighter color using color code and opacity
 export const getLighterColor = (colorCode: string, opacity: number) => {
   // Convert the color code to an RGB value
   const red = parseInt(colorCode.substring(1, 3), 16);
@@ -23,6 +25,7 @@ export const getLighterColor = (colorCode: string, opacity: number) => {
   return newColorCode;
 };
 
+// get style obj using status
 export const getColorStyles = (status: string) => {
   const color = getColor(status);
   const backgroundColor = getLighterColor(color, 0.8);

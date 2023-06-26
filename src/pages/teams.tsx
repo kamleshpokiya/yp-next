@@ -10,14 +10,17 @@ import TeamDrawer from '@/sections/teams/TeamDrawer';
 import useToggle from '@/hooks/useToggle';
 
 
+// teams page component
 const Teams = () => {
     const [showTeam, setShowTeam] = useState<string | null>(null);
     const { isOpen, onOpen, onClose } = useToggle();
 
+    // show team drawer
     const onShowTeam = (id: string) => {
         setShowTeam(id);
     }
 
+    // hide team drawer
     const onHideTeam = () => {
         setShowTeam(null);
     }

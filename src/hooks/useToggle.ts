@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 
+// useToggle hook
 const useToggle = (initialValue?: boolean) => {
     const [isOpen, setIsOpen] = useState<boolean>(initialValue || false);
 

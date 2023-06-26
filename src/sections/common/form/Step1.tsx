@@ -16,7 +16,7 @@ type Step1Props = {
     title: string,
 };
 
-
+// form: step1 component
 const Step1 = ({ onNext, data, title }: Step1Props) => {
     const validationSchema = Yup.object({
         title: Yup.string().required(`Please enter your ${title.toLowerCase()} name`),

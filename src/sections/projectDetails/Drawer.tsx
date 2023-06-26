@@ -29,6 +29,7 @@ type DrawerProps = {
 
 const MAX_CONTENT = 100;
 
+// drawer component
 const Drawer = ({ taskId }: DrawerProps) => {
     const task = useSelector((state: RootState) => getTaskById(state, taskId));
     const { isOpen: isShowMore, onToggle: onShowMore } = useToggle();
@@ -37,6 +38,7 @@ const Drawer = ({ taskId }: DrawerProps) => {
     const { leftArrowIcon } = IMAGES;
     const dispatch = useDispatch();
 
+    // formate assigned members
     const assignedMembers = members.map((member) => ({
         id: member?.id,
         name: member?.name,
@@ -44,6 +46,7 @@ const Drawer = ({ taskId }: DrawerProps) => {
         description: member?.designation,
     }));
 
+    // formate assigned teams
     const assignedTeams = teams.map((team) => ({
         id: team?.id,
         name: team?.name,
@@ -51,13 +54,16 @@ const Drawer = ({ taskId }: DrawerProps) => {
         description: `${team?.memberIds.length} members`,
     }));
 
+    // assigners: all assigned members and teams
     const assigners = assignedMembers.concat(assignedTeams);
 
+    // add task id and change tab to edit task
     const handleEditTask = () => {
         dispatch(onTaskTabChange('addTask'));
         dispatch(handleEditTaskId(taskId));
     };
 
+    // update task status
     const onUpdateTask = () => {
         if (!task?.status) return;
         dispatch(updateTask({ id: task.id, status: getTaskNextStage(task.status) }));

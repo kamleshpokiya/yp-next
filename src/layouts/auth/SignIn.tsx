@@ -26,8 +26,8 @@ type SignInProps = {
 const MAX_WIDTH = 380;
 
 const initialValues: InitialValues = {
-    email: '',
-    password: '',
+    email: 'test@gmail.com',
+    password: '12345678',
 };
 
 const validationSchema = Yup.object({
@@ -36,11 +36,17 @@ const validationSchema = Yup.object({
         .required('Please enter your password.'),
 });
 
+// sign in component
 const SignIn = ({ onSignUp }: SignInProps) => {
     const email = useSelector(getAccountEmail);
     const password = useSelector(getAccountPassword);
     const dispatch = useDispatch();
 
+    /**
+     *  1. The sign-in functionality relies on static data for authentication.
+     *  2. To implement this functionality with real users, backend functionality needs to be added.
+    */
+    // handle sign in
     const onSubmit = async (values: InitialValues, { setFieldError }: { setFieldError: any }) => {
         if (email === values.email) {
             if (password) {
@@ -83,6 +89,7 @@ const SignIn = ({ onSignUp }: SignInProps) => {
                             label='Password'
                             name='password'
                             id='password'
+                            type='password'
                             className='search-area'
                             placeholder='Enter your Password...'
                         />

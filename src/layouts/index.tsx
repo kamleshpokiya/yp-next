@@ -21,17 +21,20 @@ type LayoutProps = {
     children: ReactNode
 };
 
+// layout component
 const Layout = ({ children }: LayoutProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useToggle();
     const isLoggedIn = useSelector(getAccountIsLoggedIn);
 
+    // to remove the project details and edit task ID from the actions
     useEffect(() => {
         dispatch(removeProjectDetailsId());
         dispatch(handleEditTaskId(null));
     }, [router.asPath]);
 
+    // show authentication page if not logged in
     if (!isLoggedIn) {
         return (
             <Auth />

@@ -16,6 +16,7 @@ import IMAGES from '@/assets/images';
 import { handleEditTaskId, handleTaskDetailsId, onTaskTabChange } from '@/store/slices/actions';
 
 
+// types
 type Action = {
     title: string,
     href?: string,
@@ -29,6 +30,7 @@ type TaskCardProps = Task & {
     }
 }
 
+// task card component
 const TaskCard = ({
     id,
     title,
@@ -40,11 +42,13 @@ const TaskCard = ({
     const dispatch = useDispatch();
     const { documentInfoIcon, documentEditIcon } = IMAGES;
 
+    // add task id and change tab to update task
     const handleEditTask = () => {
         dispatch(onTaskTabChange('addTask'));
         dispatch(handleEditTaskId(id));
     };
 
+    // tab actions
     const actions: Action[] = [
         {
             title: 'Edit Task',
@@ -56,6 +60,7 @@ const TaskCard = ({
         },
     ];
 
+    // add move button to change task status
     moveButton ? actions.push(moveButton) : null;
 
     return (

@@ -5,6 +5,7 @@ import Select, { components } from 'react-select';
 import IMAGES from '@/assets/images';
 
 
+// common style
 const dot = (color = 'transparent') => ({
     alignItems: 'center',
     display: 'flex',
@@ -19,6 +20,7 @@ const dot = (color = 'transparent') => ({
     },
 });
 
+// select component styles config
 const colorStyles = {
     control: (styles: any) => ({
         ...styles,
@@ -62,6 +64,7 @@ type SelectFieldProps<T extends React.ElementType> = React.ComponentPropsWithRef
     showIcon?: boolean,
 };
 
+// select field component
 const SelectField = <T extends React.ElementType = 'select'>({
     options,
     value,
@@ -74,6 +77,7 @@ const SelectField = <T extends React.ElementType = 'select'>({
 }: SelectFieldProps<T>) => {
     const { SearchIcon } = IMAGES;
 
+    // select field search icon
     const DropdownIndicator = (props: any) => {
         return (
             <components.DropdownIndicator {...props}>

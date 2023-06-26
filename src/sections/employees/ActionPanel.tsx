@@ -23,10 +23,12 @@ const employeeTabs: EmployeeTab[] = [
     },
 ];
 
+// action panel component
 const ActionPanel = () => {
     const dispatch = useDispatch();
     const currentTab = useSelector(getCurrentEmployeeTab);
 
+    // handle tab change
     const handleTabChange = (tab: string) => {
         dispatch(onEmployeeTabChanage(tab));
     }

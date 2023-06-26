@@ -7,6 +7,8 @@ import members from './members';
 // utils
 import { getMembersIds } from '@/utils/common';
 
+
+// static team names
 const teamNames = [
     'Blue Lightning',
     'Phoenix Rising',
@@ -20,6 +22,7 @@ const teamNames = [
     'Future Fusion',
 ];
 
+// static teams
 const teams: Team[] = new Array(10).fill(0).map((_, index) => ({
     id: faker.datatype.uuid(),
     name: teamNames[index],

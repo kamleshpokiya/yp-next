@@ -9,14 +9,17 @@ import SingUp from './SingnUp';
 import IMAGES from '@/assets/images';
 
 
+// authentication component
 const Auth = () => {
     const [pageType, setPageType] = useState<'signin' | 'signup'>('signin');
     const { logo } = IMAGES;
 
+    // set sign in page
     const onSignIn = () => {
         setPageType('signin');
     }
 
+    // set sign up page
     const onSignUp = () => {
         setPageType('signup');
     }

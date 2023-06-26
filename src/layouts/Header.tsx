@@ -15,6 +15,7 @@ type HeaderProps = {
     onNavBarOpen: () => void,
 };
 
+// header component
 const Header = ({ onNavBarOpen }: HeaderProps) => {
     const title = useTitle();
     const router = useRouter();
@@ -23,6 +24,7 @@ const Header = ({ onNavBarOpen }: HeaderProps) => {
     const viewProjectId = useSelector(getViewProjectId);
     const isProjectDetailsPage = router.asPath.includes(`/projects/${projectId}`);
 
+    // toggle project id to show/hide project card on project details page
     const onViewProject = () => {
         dispatch(onViewProjectId(viewProjectId ? null : projectId));
     };

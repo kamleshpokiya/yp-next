@@ -10,6 +10,7 @@ import account from './slices/account';
 import comments from './slices/comments';
 
 
+// root reducer
 const rootReducer = combineReducers({
     actions,
     members,

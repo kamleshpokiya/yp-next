@@ -16,6 +16,7 @@ import { getIsSidePanelOpen } from '@/store/selectors/actions';
 import { Member } from '@/types';
 
 
+// data table custom styles
 const customStyles = {
   tableWrapper: {
     style: {
@@ -46,20 +47,26 @@ const customStyles = {
   },
 };
 
+// data table conditional row styles
 const conditionalRowStyles: ConditionalStyles<Member>[] = [];
 
+
+// employees table component
 const Table = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const members = useSelector(getAllMembers);
   const isSidePanelOpen = useSelector(getIsSidePanelOpen);
   const isSearchQuery = searchQuery.trim() !== '';
 
+  // filter members by search
   const getMembersBySearchedQuery = () => {
     return members.filter((member) => member.name.toLowerCase().includes(searchQuery.toLowerCase()));
   }
 
+  // all filtered members
   const filteredMembers = isSearchQuery ? getMembersBySearchedQuery() : members;
 
+  // data table columns
   const columns: TableColumn<Member>[] = useMemo(
     () => [
       {

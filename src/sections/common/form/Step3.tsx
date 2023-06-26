@@ -31,20 +31,24 @@ const validationSchema = Yup.object({
     assignedMembersIds: Yup.array().of(Yup.string()),
 });
 
+// form: step3 component
 const Step3 = ({ data, onNext, onPrev, isEditMode }: Step3Props) => {
+    // formate existing categories on update time
     const initialCategories = data.categories.map((category) => ({
         id: category,
         label: category,
         value: category,
-    }))
+    }));
     const [selectedCategories, setSelectedCategories] = useState<FormatedCategory[]>(initialCategories ?? []);
 
+    // formated categories
     const formatedCategories = categories.map((category) => ({
         id: category,
         label: category,
         value: category,
     }));
 
+    // merge all values
     const mergeAll = (values: Project | Task) => {
         const categories: string[] = selectedCategories.map((category) => category.value);
 
@@ -54,11 +58,13 @@ const Step3 = ({ data, onNext, onPrev, isEditMode }: Step3Props) => {
         }
     };
 
+    // handle next step
     const handleNext = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onNext(newValues, true);
     }
 
+    // handle previous step
     const handlePrev = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onPrev(newValues);

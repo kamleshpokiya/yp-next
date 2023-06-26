@@ -10,9 +10,11 @@ type FilePreview = {
     previewUrl: string;
 }
 
+// file upload component
 const FileUpload = () => {
     const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
 
+    // handle add and preview file
     const handleDrop = async (acceptedFiles: File[]) => {
         const newPreviews = await Promise.all(
             acceptedFiles.map(async (file) => ({
@@ -23,6 +25,7 @@ const FileUpload = () => {
         setFilePreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
     };
 
+    // handle remove file
     const handleRemove = (index: number) => {
         setFilePreviews((prevPreviews) =>
             prevPreviews.filter((_, i) => i !== index),

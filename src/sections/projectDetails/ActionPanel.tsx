@@ -15,6 +15,7 @@ type TaskTab = {
     href: string,
 };
 
+// task tabs
 const taskTabs: TaskTab[] = [
     {
         type: 'tasks',
@@ -28,10 +29,12 @@ const taskTabs: TaskTab[] = [
     },
 ];
 
+// action panel component
 const ActionPanel = () => {
     const dispatch = useDispatch();
     const currentTab = useSelector(getCurrentTaskTab);
 
+    // handle tab change
     const handleTabChange = (tab: string) => {
         dispatch(onTaskTabChange(tab));
     }

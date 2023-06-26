@@ -17,10 +17,12 @@ type AddCategoryProps = {
     setSelectedCategories: (selected: FormatedCategory[]) => void,
 };
 
+// add category component
 const AddCategory = ({ selectedCategories, setSelectedCategories }: AddCategoryProps) => {
     const [newCategory, setNewCategory] = useState('');
     const { isOpen, onClose, onToggle } = useToggle();
 
+    // handle add new category
     const onAddNewCategory = () => {
         setSelectedCategories([...selectedCategories, {
             id: newCategory,

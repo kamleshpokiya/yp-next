@@ -10,6 +10,7 @@ import Table from '@/sections/employees/Table';
 import { getCurrentEmployeeTab } from '@/store/selectors/actions';
 
 
+// employees page component
 const Employees = () => {
     const currentTab = useSelector(getCurrentEmployeeTab);
 

@@ -26,13 +26,21 @@ const validationSchema = Yup.object({
     address: Yup.string().required('Please enter your address'),
 });
 
+// my account page component
 const MyAccount = () => {
     const dispatch = useDispatch();
     const router = useRouter();
     const initialValues = useSelector(getAccount);
 
+    /**
+     * 1. update account functionality based static data.
+     * 2. Backend functionality is not implemented, so the data will not persist in real time.
+     * 3. If desired, backend functionality can be added to enable real-time data updates.
+     */
+    // handle update account
     const onSubmit = (values: Account) => {
         dispatch(updateAccount(values));
+        // redirect to home page after updating account
         router.push('/');
     }
 

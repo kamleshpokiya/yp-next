@@ -33,7 +33,7 @@ type Images = {
     [key: string]: Image,
 };
 
-
+// icons and images
 const IMAGES:Images = {
     logo: {
         src: logo,

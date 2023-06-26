@@ -9,9 +9,9 @@ const initialState: Account = {
     firstName: '',
     lastName: '',
     mobileNumber: '',
-    email: '',
+    email: 'test@gmail.com',
     address: '',
-    password: null,
+    password: '$2a$10$zteq.KrAaQYld3agYUuRKeV3DmA7nzo40kCPrHa1pIGw3lwCVgNhy',
     isLoggedIn: false,
     avatar: faker.internet.avatar(),
 };

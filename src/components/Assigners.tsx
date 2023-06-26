@@ -24,7 +24,7 @@ type AssignersProps = {
     onRemove?: (id: string) => void,
 };
 
-// Assigners Component
+// assigners component
 const Assigners = ({
     assigners,
     isSelectable = false,
@@ -36,10 +36,12 @@ const Assigners = ({
 }: AssignersProps) => {
     const [checked, setChecked] = useState<string[]>(checkedList);
 
+    // handle selections
     const onCheck = (isChecked: boolean, id: string) => {
         setChecked(prev => isChecked ? [...prev, id] : prev.filter(item => item !== id));
     }
 
+    // update checklist on selection
     useEffect(() => {
         if (setCheckedList) {
             setCheckedList(checked);
@@ -97,7 +99,7 @@ const Assigners = ({
 
 export default Assigners;
 
-// Assigner Card Component
+// assigner card component
 export const AssignerCard = ({ avatar, name, description }: Assigner) => {
     return (
         <label className="team-checkbox">

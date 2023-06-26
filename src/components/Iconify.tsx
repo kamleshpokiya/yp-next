@@ -9,6 +9,7 @@ interface IconifyProps {
     sx?: Record<string, unknown>;
 }
 
+// iconify component
 const Iconify: ForwardRefRenderFunction<HTMLSpanElement, IconifyProps> = (
     { icon, width = 20, sx, ...other },
     ref

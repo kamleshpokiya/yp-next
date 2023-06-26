@@ -20,12 +20,14 @@ type TeamDrawerProps = {
     onClose: () => void,
 };
 
+// team drawer component
 const TeamDrawer = ({ id, onClose }: TeamDrawerProps) => {
     const team = useSelector((state: RootState) => getTeam(state, id));
     const members = useSelector((state: RootState) => getMembers(state, team?.memberIds));
     const { leftArrowIcon } = IMAGES;
     const dispatch = useDispatch();
 
+    // formate member
     const formateMember = (member: any) => ({
         id: member?.id,
         name: member?.name,
@@ -33,8 +35,10 @@ const TeamDrawer = ({ id, onClose }: TeamDrawerProps) => {
         description: member?.designation,
     });
 
+    // formated members
     const formatedMembers = members.map(formateMember);
 
+    // handle remove member from team
     const handleRemoveMember = (id: string) => {
         dispatch(onRemoveMemberFromTeam({
             teamId: team?.id,
@@ -42,6 +46,7 @@ const TeamDrawer = ({ id, onClose }: TeamDrawerProps) => {
         }));
     }
 
+    // handle remove team
     const handleRemoveTeam = () => {
         dispatch(onRemoveTeam(id));
         onClose();

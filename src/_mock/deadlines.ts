@@ -1,3 +1,4 @@
+// static deadlines
 const deadlines: string[] = [
     'Missing Deadline',
     'Deadline',

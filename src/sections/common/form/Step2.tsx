@@ -32,6 +32,7 @@ const validationSchema = Yup.object({
     assignedMembersIds: Yup.array().of(Yup.string()),
 });
 
+// form: step2 component
 const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
     const [searchMemberQuery, setSearchMemberQuery] = useState<string>('');
     const [searchTeamQuery, setSearchTeamQuery] = useState<string>('');
@@ -41,19 +42,10 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
     const teams = useSelector(getAllTeams);
     const isSearchMemberQuery = searchMemberQuery.trim() !== '';
     const isSearchTeamQuery = searchTeamQuery.trim() !== '';
-
-    const getMembersBySearchedQuery = () => {
-        return members.filter((member) => member.name.toLowerCase().includes(searchMemberQuery.toLowerCase()));
-    }
-
-    const getTeamsBySearchedQuery = () => {
-        return teams.filter((team) => team.name.toLowerCase().includes(searchTeamQuery.toLowerCase()));
-    }
-
     const filteredMembers = isSearchMemberQuery ? filterBySearchQuery(members, searchMemberQuery, 'name') : members;
     const filteredTeams = isSearchTeamQuery ? filterBySearchQuery(teams, searchTeamQuery, 'name') : teams;
 
-
+    // update member to expected formate
     const formateMember = (member: any) => ({
         id: member?.id,
         name: member?.name,
@@ -61,6 +53,7 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
         description: member?.designation,
     });
 
+    // update team to expected formate
     const formateTeam = (team: any) => ({
         id: team?.id,
         name: team?.name,
@@ -68,9 +61,12 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
         description: team?.memberIds.length ? `${team?.memberIds.length} members` : '',
     });
 
+    // formated members
     const formatedMembers = filteredMembers.map(formateMember);
+    // formated teams
     const formatedTeams = filteredTeams.map(formateTeam);
 
+    // merge all values
     const mergeAll = (values: Project | Task) => ({
         ...values,
         status: (checkedMembers.length > 0 || checkedTeams.length > 0) ? 'In Progress' : 'Pending Allocation',
@@ -79,11 +75,13 @@ const Step2 = ({ onNext, onPrev, data }: Step2Props) => {
         deadline: 'Pending Allocation',
     });
 
+    // handle next step
     const handleNext = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onNext(newValues);
     }
 
+    // handle previous step
     const handlePrev = (values: Project | Task) => {
         const newValues = mergeAll(values);
         onPrev(newValues);

@@ -8,6 +8,7 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string;
 }
 
+// text area component
 const TextArea: React.FC<TextAreaProps> = ({ label, ...rest }) => {
     return (
         <div className="input-box input comment">

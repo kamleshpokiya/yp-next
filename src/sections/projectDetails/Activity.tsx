@@ -23,6 +23,7 @@ type ActivityProps = {
     taskId: string | null,
 };
 
+// activity component : task comments and chats
 const Activity = ({ taskId }: ActivityProps) => {
     const [comment, setComment] = useState('');
     const { isOpen, onToggle } = useToggle();
@@ -34,6 +35,7 @@ const Activity = ({ taskId }: ActivityProps) => {
     const comments = useSelector((state: RootState) => getCommentsByTaskId(state, taskId));
     const fullName = `${firstName} ${lastName}`;
 
+    // add comment on enter
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             if (comment.trim() !== '') {

@@ -1,3 +1,4 @@
+// static designations
 const designations: string[] = [
     'Business Analyst',
     'Content Writer',

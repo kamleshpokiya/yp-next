@@ -18,18 +18,19 @@ type AddTeamProps = {
     onClose: () => void,
 };
 
-const validationSchema = Yup.object({
-    name: Yup.string().required('Please enter your team name.'),
-});
-
 type InitialValue = {
     name: string,
 };
+
+const validationSchema = Yup.object({
+    name: Yup.string().required('Please enter your team name.'),
+});
 
 const initialValues: InitialValue = {
     name: '',
 };
 
+// add team component
 const AddTeam = ({ onClose }: AddTeamProps) => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [checkedMembers, setCheckedMembers] = useState<string[]>([]);
@@ -38,12 +39,15 @@ const AddTeam = ({ onClose }: AddTeamProps) => {
     const [error, setError] = useState<string | null>(null);
     const isSearchQuery = searchQuery.trim() !== '';
 
+    // filter members by search
     const getMembersBySearchedQuery = () => {
         return members.filter((member) => member.name.toLowerCase().includes(searchQuery.toLowerCase()));
     }
 
+    // all filtered members
     const filteredMembers = isSearchQuery ? getMembersBySearchedQuery() : members;
 
+    // fomate member
     const formateMember = (member: any) => ({
         id: member?.id,
         name: member?.name,
@@ -51,8 +55,10 @@ const AddTeam = ({ onClose }: AddTeamProps) => {
         description: member?.designation,
     });
 
+    // all formated members
     const formatedMembers = filteredMembers.map(formateMember);
 
+    // handle add team
     const onSubmit = (values: InitialValue, { resetForm }: FormikHelpers<InitialValue>) => {
         if (!checkedMembers.length) {
             setError('Please select atleast one member.');

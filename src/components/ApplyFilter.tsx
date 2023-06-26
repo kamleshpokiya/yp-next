@@ -1,3 +1,4 @@
+// apply filter component
 const ApplyFilter = () => {
     return (
         <div className="main-btn-box">

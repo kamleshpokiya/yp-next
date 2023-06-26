@@ -36,6 +36,14 @@ const initialProjectValues: Project = {
     teamIds: [],
 };
 
+
+/**
+ * 1. add project
+ * 2. update project
+ * 3. add task
+ * 4. update task
+*/
+// form component
 const Form = ({
     onSubmit,
     formTitle,
@@ -51,7 +59,7 @@ const Form = ({
     const title = formTitle ?? 'Project';
     const { ChevronRightIcon } = IMAGES;
 
-
+    // handle next step
     const onNext = (data: Project | Task, isLastStep: boolean = false) => {
         setData(prev => ({ ...prev, ...data }));
 
@@ -64,11 +72,13 @@ const Form = ({
         setCurrentStep(prev => prev + 1);
     };
 
+    // handle previous step
     const onPrev = (data: Project | Task) => {
         setData(prev => ({ ...prev, ...data }));
         setCurrentStep(prev => prev - 1);
     };
 
+    // all steps
     const steps = [
         <Step1 onNext={onNext} data={data} title={title} />,
         <Step2 onNext={onNext} onPrev={onPrev} data={data} />,

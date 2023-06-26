@@ -18,6 +18,7 @@ type ArchivedProps = {
     projectId: string | string[],
 };
 
+// archived tasks component
 const Archived = ({ projectId }: ArchivedProps) => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const dispatch = useDispatch();
@@ -27,10 +28,12 @@ const Archived = ({ projectId }: ArchivedProps) => {
     const archivedTasks = useSelector((state: RootState) => getArchivedTasksByProjectId(state, projectId));
     const isSearchQuery = searchQuery.trim() !== '';
 
+    // filter tasks by search
     const getTasksBySearchedQuery = () => {
         return archivedTasks?.filter((task) => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
     }
 
+    // all filtered tasks
     const filteredTasks = isSearchQuery ? getTasksBySearchedQuery() : archivedTasks;
 
     return (

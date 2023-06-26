@@ -3,6 +3,7 @@ import Account from './Account';
 import Notifications from './Notifications';
 
 
+// sidebar component
 const SideBar = () => {
     return (
         <div className="msg-section">

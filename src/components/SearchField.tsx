@@ -11,6 +11,7 @@ type SearchFieldProps<T> = {
     onChange: (e: ChangeEvent<HTMLInputElement>) => void,
 } & T;
 
+// search field
 const SearchField = <T,>(props: SearchFieldProps<T>) => {
     const { SearchIcon } = IMAGES;
 

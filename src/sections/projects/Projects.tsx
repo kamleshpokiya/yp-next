@@ -16,15 +16,18 @@ type ProjectsProps = {
     status: string,
 };
 
+// projects component
 const Projects = ({ status }: ProjectsProps) => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const projects = useSelector((state: RootState) => getProjectsByStatus(state, status));
     const isSearchQuery = searchQuery.trim() !== '';
 
+    // filter projects by search
     const getProjectsBySearchedQuery = () => {
         return projects?.filter((project) => project.title.toLowerCase().includes(searchQuery.toLowerCase()));
     }
 
+    // all filtered projects
     const filteredProjects = isSearchQuery ? getProjectsBySearchedQuery() : projects;
 
     return (

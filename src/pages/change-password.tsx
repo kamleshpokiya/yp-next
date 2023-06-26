@@ -38,11 +38,18 @@ const validationSchema = Yup.object({
         .required('Please enter confirm password')
 });
 
+// change password page component
 const ChangePassword = () => {
     const dispatch = useDispatch();
     const router = useRouter();
     const currentPassword = useSelector(getAccountPassword);
 
+    /**
+     * 1. Change password functionality based on static data.
+     * 2. Backend functionality is not implemented, so the data will not persist in real time.
+     * 3. If desired, backend functionality can be added to enable real-time data updates.
+     */
+    // handle change password
     const onSubmit = async (values: InitialValues, { setFieldError }: { setFieldError: any }) => {
         if (!currentPassword) return;
 
@@ -55,6 +62,7 @@ const ChangePassword = () => {
 
         const hashedPassword = await hashPassword(values.newPassword);
         dispatch(updatePassword(hashedPassword));
+        // after changing password redirect to home page
         router.push('/');
     }
 

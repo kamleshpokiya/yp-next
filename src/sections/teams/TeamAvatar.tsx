@@ -21,12 +21,13 @@ type TeamAvatarProps = {
     isDefaultAvatarImage?: boolean
 };
 
-
+// team avatar component
 const TeamAvatar = ({ isDefaultAvatarImage }: TeamAvatarProps) => {
     const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
     const defaultAvatar = useSelector(getAccountAvatar);
     const { boyAvatar } = IMAGES;
 
+    // handle add and preview image
     const handleDrop = async (acceptedFiles: File[]) => {
         const newPreviews = await Promise.all(
             acceptedFiles.map(async (file) => ({

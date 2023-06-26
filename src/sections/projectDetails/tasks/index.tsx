@@ -21,8 +21,10 @@ type TasksProps = {
     projectId: string | string[] | undefined,
 };
 
+// status
 const allStatus = ['Todo', 'In Progress', 'Completed'];
 
+// get task next stage by status : todo -> in-progress
 export const getTaskNextStage = (status: string): string => {
     switch (status) {
         case 'Todo':
@@ -38,6 +40,7 @@ export const getTaskNextStage = (status: string): string => {
     }
 }
 
+// tasks component
 const Tasks = ({ projectId }: TasksProps) => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const activeTasks = useSelector((state: RootState) => getTasksByProjectId(state, projectId));
@@ -49,12 +52,15 @@ const Tasks = ({ projectId }: TasksProps) => {
     const dispatch = useDispatch();
     const isSearchQuery = searchQuery.trim() !== '';
 
+    // filter tasks by search
     const getTasksBySearchedQuery = () => {
         return activeTasks.filter((task) => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
     }
 
+    // filtered tasks
     const filteredTasks = isSearchQuery ? getTasksBySearchedQuery() : activeTasks;
 
+    // update task status
     const onUpdateTask = (id: string, status: string) => {
         dispatch(updateTask({ id, status }));
         dispatch(handleTaskDetailsId(null));

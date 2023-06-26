@@ -41,12 +41,14 @@ const validationSchema = Yup.object({
     designation: Yup.object().required('Please select employee role.'),
 });
 
+// form component : add and update employee
 const Form = () => {
     const dispatch = useDispatch();
     const editMemberId = useSelector(getEditMemberId);
     const member = useSelector((state: RootState) => getMemberById(state, editMemberId));
     const isSidePanelOpen = useSelector(getIsSidePanelOpen);
 
+    // formate member
     const formatedMember = () => {
         if (!member) return null;
         return {
@@ -59,9 +61,11 @@ const Form = () => {
         }
     };
 
+    // form actions
     const action: string = member ? 'Update' : 'Add';
     const values: InitialValues = formatedMember() ?? initialValues;
 
+    // handle add/update member
     const handleSubmit = (values: InitialValues) => {
         if (member) {
             dispatch(updateMember(values));
@@ -72,6 +76,7 @@ const Form = () => {
         dispatch(onEmployeeTabChanage('employees'));
     }
 
+    // formated designations
     const formatedDesignations: Option[] = designations.map((designation) => ({
         id: designation,
         label: designation,

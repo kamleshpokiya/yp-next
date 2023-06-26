@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
 
 
+// presist config
 const persistConfig = {
     key: 'root',
     storage,
@@ -13,8 +14,10 @@ const persistConfig = {
     blacklist: ['actions'],
 };
 
+// presisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// store
 const store = configureStore({
     reducer: persistedReducer,
 });

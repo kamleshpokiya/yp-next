@@ -1,3 +1,4 @@
+// static categories
 const categories: string[] = [
     'Web development',
     'Mobile app development',

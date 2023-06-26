@@ -14,6 +14,7 @@ type PanelWrapProps = {
     children: ReactNode
 };
 
+// panel component
 const PanelWrap = ({ children }: PanelWrapProps) => {
     const { leftArrowIcon } = IMAGES;
     const dispatch = useDispatch();

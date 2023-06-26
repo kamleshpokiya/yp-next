@@ -15,6 +15,7 @@ type ProjectTabs = {
     href: string,
 };
 
+// project tabs
 const projectTabs: ProjectTabs[] = [
     {
         type: 'newProjects',
@@ -33,10 +34,12 @@ const projectTabs: ProjectTabs[] = [
     },
 ];
 
+// project action panel component
 const ActionPanel = () => {
     const dispatch = useDispatch();
     const currentTab = useSelector(getCurrentProjectTab);
 
+    // change project tab
     const handleTabChange = (tab: string) => {
         dispatch(onProjectTabChange(tab));
     }
